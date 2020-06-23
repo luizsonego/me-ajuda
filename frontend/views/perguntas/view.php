@@ -80,7 +80,7 @@ $this->title = $model->id;
 
 
 <div class="row">
-    <div class="col-md-6">
+    <div class="col-md-12">
         <?= $this->render('/respostas/create', array('model' => $answer)); ?>
     </div>
 </div>
