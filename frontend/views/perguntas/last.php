@@ -1,6 +1,8 @@
-<?
+<?php
 use yii\helpers\Url;
 ?>
+
+<h3 class="text-center">Últimas perguntas</h3>
 <?php foreach ($model as $key => $answer): ?>
     <div class="media border">
         <div class="media-left">
