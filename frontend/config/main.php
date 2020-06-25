@@ -11,16 +11,27 @@ return [
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
     'controllerNamespace' => 'frontend\controllers',
+    'modules' => [
+        'user' => [
+            'class' => Da\User\Module::class,
+        ],
+    ],
     'components' => [
+        'view' => [
+            'theme' => [
+                'pathMap' => [
+                    '@Da/User/resources/views' => '@frontend/views/user'
+                ],
+            ],
+        ],
         'request' => [
             'csrfParam' => '_csrf-frontend',
         ],
-        
-        'user' => [
-            'identityClass' => Da\User\Module::class,
-            'enableAutoLogin' => true,
-            'identityCookie' => ['name' => '_identity-frontend', 'httpOnly' => true],
-        ],
+        // 'user' => [
+        //     'identityClass' => Da\User\Module::class,
+        //     'enableAutoLogin' => true,
+        //     'identityCookie' => ['name' => '_identity-frontend', 'httpOnly' => true],
+        // ],
         'session' => [
             // this is the name of the session cookie used for login on the frontend
             'name' => 'advanced-frontend',

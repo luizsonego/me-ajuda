@@ -6,21 +6,10 @@ body {
 .perguntas-create.border,
 .perguntas-view.border,
 .border{
-    border: #f7f7f7 solid 1px;
-    padding: 15px 25px;
-    box-shadow: #f7f7f7 0 0 3px 0;
-    border-radius: 7px;
-}
-.border:hover{
     border: #eee solid 1px;
     padding: 15px 25px;
-    box-shadow: #eee 0 0 5px 0;
-    border-radius: 9px;
-}
-
-.centered {
-    margin: 0 auto !important;
-    float: none !important;
+    box-shadow: #eee 0 0 3px 0;
+    border-radius: 10px;
 }
 
 

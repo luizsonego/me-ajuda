@@ -7,8 +7,7 @@ use yii\helpers\Html;
 ?>
 
 <div class="row">
-    <div class="col-md-6">
-
+    <div class="col-md-12">
         <div class="media">
             <div class="media-left">
                 <a href="#">
@@ -16,19 +15,10 @@ use yii\helpers\Html;
                 </a>
             </div>
             <div class="media-body">
-
-            <?= $this->render('_form', [
-                'model' => $model,
-            ]) ?>
-
+                <?= $this->render('_form', [
+                    'model' => $model,
+                ]) ?>
             </div>
         </div>
-
     </div>
-</div>
-
-
-<div class="respostas-create">
-
-  
 </div>

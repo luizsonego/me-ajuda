@@ -1,6 +1,15 @@
 <?php
 /* @var $this yii\web\View */
 ?>
-<?= $this->render('/perguntas/create', array('model' => $model)); ?>
 
-<?= $this->render('/perguntas/last', array('model' => $last)); ?>
+<div class="row">
+    <div class="col-md-7 centered">
+        <?= $this->render('/perguntas/create', array('model' => $model)); ?>
+    </div>
+</div>
+<br>
+<div class="row">
+    <div class="col-md-7 centered">
+        <?= $this->render('/perguntas/last', array('model' => $last)); ?>
+    </div>
+</div>

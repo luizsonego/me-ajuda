@@ -16,7 +16,7 @@ class FoundationAsset extends AssetBundle
     ];
 
     public $js = [
-        'dist\css\foundation.min.js',
+        'dist\js\foundation.min.js',
     ];
 
     public $depends = [

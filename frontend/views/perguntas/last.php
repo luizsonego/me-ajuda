@@ -1,3 +1,8 @@
+<?php
+use yii\helpers\Url;
+?>
+
+<h3 class="text-center">Últimas perguntas</h3>
 <?php foreach ($model as $key => $answer): ?>
     <div class="media border">
         <div class="media-left">
@@ -8,13 +13,23 @@
         <div class="media-body">
             <h4 class="media-heading"><?= $answer->user_id ?> Nome Usuario</h4>
             <p style="min-height:50px;" class="list-group-item-text"><?= nl2br($answer->pergunta) ?></p>
+            <br>
             <p class="list-group-item-text"><small><?= $answer->created_at ?></small></p>
+            <hr>
             <p>
                 <div class="row">
                     <div class="col-md-3">
                         <span style="color:#d44572;">
-                            <i class="fas fa-apple-alt fa-2x"></i> <?= rand(1000, 5000) ?>
+                            <i class="fas fa-apple-alt fa-2x"></i> 100
                         </span>
+                    </div>
+                    <div class="col-md-3 col-md-offset-6">
+                        <?php
+                            $url = Url::to(['perguntas/view', 'id' => $answer->id]);
+                         ?>
+                        <a 
+                        href="<?=$url?>"
+                        class="btn btn-block btn-dark btn-outline-dark btn-default">Responder</a>
                     </div>
                 </div>
 

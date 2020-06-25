@@ -67,12 +67,15 @@ class RespostasController extends Controller
         $model = new Respostas();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+            \Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
+            return 1;
+            // return $this->redirect(['view', 'id' => $model->id]);
         }
-
-        return $this->render('create', [
-            'model' => $model,
-        ]);
+        else{
+            return $this->renderAjax('create', [
+                'model' => $model,
+            ]);
+        }
     }
 
     /**
