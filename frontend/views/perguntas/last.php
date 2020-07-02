@@ -1,8 +1,10 @@
 <?php
 use yii\helpers\Url;
+use yii\widgets\Pjax;
 ?>
 
 <h3 class="text-center">Últimas perguntas</h3>
+<?php Pjax::begin(); ?>
 <?php foreach ($model as $key => $answer): ?>
     <div class="media border">
         <div class="media-left">
@@ -39,3 +41,4 @@ use yii\helpers\Url;
     </div>
     <hr>
 <?php endforeach; ?>
+<?php Pjax::end(); ?>
