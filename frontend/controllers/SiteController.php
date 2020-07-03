@@ -84,11 +84,7 @@ class SiteController extends Controller
         $post = \Yii::$app->request->post();
         if ($formCreateQuestions->load(Yii::$app->request->post()) && $formCreateQuestions->save()) {
             // \Yii::$app->getSession()->setFlash('success', 'Pergunta cadastrada com sucesso!!!');
-            // return 1;
-            Yii::$app->response->format = Response::FORMAT_JSON;
-            return Json::encode([
-                        'message' => 'success'
-            ]);
+            return 1;
         }
             return $this->render('index', array(
                 'model' => $formCreateQuestions,

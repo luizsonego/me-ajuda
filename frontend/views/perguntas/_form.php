@@ -9,6 +9,9 @@ use yii\widgets\ActiveForm;
 
 <?php $form = ActiveForm::begin([
     'id' => "formQuestion", 
+    'options' => [
+        'class' => "formQuest",
+     ]
 ]); ?>
     <div class="row">
         <div class="col-md-12">
@@ -25,8 +28,12 @@ use yii\widgets\ActiveForm;
 <?php ActiveForm::end(); ?>
 
 
+<!-- <button id="newFormQuestion" style="display: none;" onclick="myFunction()">Try it</button> -->
+<button class="_newQuest btn btn-success" id="newFormQuestion" style="display: none;">Criar nova pergunta</button>
+
 <?php
 $js = <<<JS
+
 // get the form id and set the event
 $('form#formQuestion').on('beforeSubmit', function(e) {
     // return false to prevent submission
@@ -38,10 +45,9 @@ $('form#formQuestion').on('beforeSubmit', function(e) {
     .done(function(result) {
         console.log(result)
         if(result == 1){
-            // document.getElementById("formQuestion").style.display = "none";
-            // $(\$form).trigger('reset')
-            // document.getElementById('toast').innerHTML = '';
-            // $.pjax.reload({container: '#questions'})
+            document.getElementById("formQuestion").style.display = "none";
+            document.getElementById("newFormQuestion").style.display = "block";
+            $(\$form).trigger('reset')
         }else{
             $("#message").html(result)
         }
@@ -52,6 +58,14 @@ $('form#formQuestion').on('beforeSubmit', function(e) {
 }).on('submit', function(e){    // can be omitted
     e.preventDefault();         // can be omitted
 });
+
+$('._newQuest').on('click', function(event){
+    event.preventDefault();
+    var element, name, arr;
+    element = document.getElementById("formQuestion").style.display = "block";
+    element = document.getElementById("newFormQuestion").style.display = "none";
+});
+
 JS;
  
 $this->registerJs($js);

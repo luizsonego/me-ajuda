@@ -34,11 +34,13 @@ use yii\widgets\Pjax;
                         class="btn btn-block btn-dark btn-outline-dark btn-default">Responder</a>
                     </div>
                 </div>
-
-
             </p>
         </div>
     </div>
     <hr>
 <?php endforeach; ?>
 <?php Pjax::end(); ?>
+<?php
+$urlAll = Url::to(['/perguntas']);
+?>
+<a href="<?=$urlAll?>" class="btn btn-success">Ver Mais perguntas</a>
