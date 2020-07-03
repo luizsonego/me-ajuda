@@ -16,6 +16,9 @@ use frontend\models\ResetPasswordForm;
 use frontend\models\SignupForm;
 use frontend\models\ContactForm;
 
+use yii\helpers\Json;
+use yii\web\Response;
+
 /**
  * Site controller
  */
@@ -80,13 +83,13 @@ class SiteController extends Controller
         
         $post = \Yii::$app->request->post();
         if ($formCreateQuestions->load(Yii::$app->request->post()) && $formCreateQuestions->save()) {
-            \Yii::$app->getSession()->setFlash('success', 'Pergunta cadastrada com sucesso!');
+            // \Yii::$app->getSession()->setFlash('success', 'Pergunta cadastrada com sucesso!!!');
+            return 1;
         }
-
-        return $this->render('index', array(
-            'model' => $formCreateQuestions,
-            'last' => $lastAnswer
-        ));
+            return $this->render('index', array(
+                'model' => $formCreateQuestions,
+                'last' => $lastAnswer
+            ));
     }
 
     // public function actionLasts()

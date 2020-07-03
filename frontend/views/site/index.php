@@ -1,7 +1,7 @@
 <?php
 /* @var $this yii\web\View */
 ?>
-
+<div id="toast"></div>
 <div class="row">
     <div class="col-md-7 centered">
         <?= $this->render('/perguntas/create', array('model' => $model)); ?>
