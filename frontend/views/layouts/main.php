@@ -12,7 +12,7 @@ use common\widgets\Alert;
 use frontend\assets\FoundationAsset;
 
 AppAsset::register($this);
-// FoundationAsset::register($this);
+FoundationAsset::register($this);
 ?>
 <?php $this->beginPage() ?>
 <!DOCTYPE html>
@@ -31,6 +31,8 @@ AppAsset::register($this);
             float: none !important;
         }
     </style>
+    <script src="https://use.fontawesome.com/a2ec73cb6b.js"></script>
+
     <?php $this->head() ?>
 </head>
 
@@ -75,11 +77,42 @@ AppAsset::register($this);
         </div>
     </div>
 
-    <footer class="footer">
-        <div class="container">
-            <p class="pull-left">&copy; <?= Html::encode(Yii::$app->name) ?> <?= date('Y') ?></p>
-
-            <p class="pull-right"><?= Yii::powered() ?></p>
+    <footer class="marketing-site-footer">
+        <div class="row medium-unstack">
+            <div class="medium-4 columns">
+                <h4 class="marketing-site-footer-name">&nbsp;</h4>
+                <ul class="menu marketing-site-footer-bottom-links">
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">Perguntas</a></li>
+                        <li><a href="#">Registrar</a></li>
+                        <li><a href="#">Login</a></li>
+                    </ul>
+            </div>
+            <div class="medium-4 columns">
+            </div>
+            <div class="medium-4 columns">
+                <h4 class="marketing-site-footer-title">Social</h4>
+                <div class="menu row small-up-3">
+                    <div class="column column-block">
+                        <li><a href="#"><i class="fa fa-youtube-square fa-3x" aria-hidden="true"></i></a></li>
+                    </div>
+                    <div class="column column-block">
+                        <li><a href="#"><i class="fa fa-facebook-square fa-3x" aria-hidden="true"></i></a></li>
+                    </div>
+                    <div class="column column-block">
+                        <li><a href="#"><i class="fa fa-twitter-square fa-3x" aria-hidden="true"></i></a></li>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="marketing-site-footer-bottom">
+            <div class="row large-unstack align-middle">
+                <div class="column">
+                    <p>&copy; 2017 No rights reserved</p>
+                </div>
+                <div class="column">
+                </div>
+            </div>
         </div>
     </footer>
 
