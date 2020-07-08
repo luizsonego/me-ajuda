@@ -82,6 +82,9 @@ class SiteController extends Controller
         $lastAnswer = Perguntas::getLastAnswer();
         
         $post = \Yii::$app->request->post();
+        if (!Yii::$app->user->isGuest) {
+            $formCreateQuestions->user_id = Yii::$app->user->identity->id;
+        }
         if ($formCreateQuestions->load(Yii::$app->request->post()) && $formCreateQuestions->save()) {
             // \Yii::$app->getSession()->setFlash('success', 'Pergunta cadastrada com sucesso!!!');
             return 1;

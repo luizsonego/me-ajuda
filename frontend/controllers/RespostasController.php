@@ -65,7 +65,9 @@ class RespostasController extends Controller
     public function actionCreate()
     {
         $model = new Respostas();
-
+        if (!Yii::$app->user->isGuest) {
+            $model->user_id = Yii::$app->user->identity->id;
+        }
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             \Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
             return 1;
