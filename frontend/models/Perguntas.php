@@ -76,4 +76,15 @@ class Perguntas extends \yii\db\ActiveRecord
 
         return $last;
     }
+
+    public static function getMyQuestions()
+    {
+        $my = Perguntas::find()
+            ->where(['user_id' => Yii::$app->user->identity->id])
+            ->limit(5)
+            ->orderBy('id DESC')
+            ->all();
+
+        return $my;
+    }
 }

@@ -1,13 +1,7 @@
 <?php
-
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
-
-/* @var $this yii\web\View */
-/* @var $model app\models\PerguntasSearch */
-/* @var $form yii\widgets\ActiveForm */
 ?>
-
 <div class="perguntas-search">
 
     <?php $form = ActiveForm::begin([
@@ -18,23 +12,22 @@ use yii\widgets\ActiveForm;
         ],
     ]); ?>
 
-    <?//= $form->field($model, 'id') ?>
+    <div class="grid-x">
+        <div class="cell large-auto">
+            <?= $form->field($model, 'pergunta') ?>
+        </div>
+        <div class="cell large-auto">
+            <?= $form->field($model, 'materia') ?>
+        </div>
+        <div class="cell large-auto">
+            <?= $form->field($model, 'instituicao') ?>
+        </div>
 
-    <?= $form->field($model, 'pergunta') ?>
-
-    <?= $form->field($model, 'materia') ?>
-
-    <?= $form->field($model, 'instituicao') ?>
-
-    <?//= $form->field($model, 'created_at') ?>
-
-    <?php // echo $form->field($model, 'updated_at') ?>
-
-    <?php // echo $form->field($model, 'user_id') ?>
-
-    <div class="form-group">
-        <?= Html::submitButton('Search', ['class' => 'btn btn-primary']) ?>
-        <?= Html::resetButton('Reset', ['class' => 'btn btn-outline-secondary']) ?>
+        <div class="cell large-auto">
+            <label>&nbsp;</label>
+            <?= Html::submitButton('Search', ['class' => 'button radius bordered  primary']) ?>
+            <?= Html::resetButton('Reset', ['class' => 'button radius bordered  secondary']) ?>
+        </div>
     </div>
 
     <?php ActiveForm::end(); ?>

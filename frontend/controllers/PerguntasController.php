@@ -9,6 +9,7 @@ use app\models\Respostas;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\data\Pagination;
 
 /**
  * PerguntasController implements the CRUD actions for Perguntas model.
@@ -38,6 +39,10 @@ class PerguntasController extends Controller
     {
         $searchModel = new PerguntasSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+
+        $dataProvider->pagination = [
+            'pageSize' => 2,
+        ];
 
         return $this->render('index', [
             'searchModel' => $searchModel,
@@ -69,6 +74,15 @@ class PerguntasController extends Controller
     {
         $model = new Perguntas();
         return $this->render('last', [
+            'model' => $model
+        ]);
+    }
+
+    public function actionMyquestions()
+    {
+        $model = Perguntas::getMyQuestions();
+
+        return $this->render('minhas', [
             'model' => $model
         ]);
     }
