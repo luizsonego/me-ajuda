@@ -19,12 +19,7 @@ $this->title = $model->id;
                     <div class="col-md-6">
                         <div class="col-md-10">
                             <h4 class="media-heading">
-                                <?php
-                                echo Yii::$app->user->isGuest ? "Anônimo" : "usuario";
-                                ?> -
-                                <?php
-                                echo $model->materia;
-                                ?>
+                                <?= $model->aluno->username; ?>
                             </h4>
                         </div>
                     </div>
@@ -37,7 +32,7 @@ $this->title = $model->id;
                 </div>
                 <div class="row">
                     <hr>
-                    <p class="pull-left"></p>
+                    <p class="pull-left"><?= $model->materias->materia?></p>
                     <p class="pull-right"><small><?= $model->created_at ?></small></p>
                 </div>
             </div>

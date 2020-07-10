@@ -5,7 +5,7 @@ use yii\widgets\Pjax;
 
 <h3 class="text-center">Últimas perguntas</h3>
 <?php Pjax::begin(); ?>
-<?php foreach ($model as $key => $answer): ?>
+<?php foreach ($model as $key => $quest): ?>
     <div class="media border">
         <div class="media-left">
             <a href="#">
@@ -13,10 +13,10 @@ use yii\widgets\Pjax;
             </a>
         </div>
         <div class="media-body">
-            <h4 class="media-heading"><?= $answer->user_id ?> Nome Usuario</h4>
-            <p style="min-height:50px;" class="list-group-item-text"><?= nl2br($answer->pergunta) ?></p>
+            <h4 class="media-heading"><?= $quest->aluno->username ?></h4>
+            <p style="min-height:50px;" class="list-group-item-text"><?= nl2br($quest->pergunta) ?></p>
             <br>
-            <p class="list-group-item-text"><small><?= $answer->created_at ?></small></p>
+            <p class="list-group-item-text"><small><?= $quest->created_at ?></small></p>
             <hr>
             <p>
                 <div class="row">
@@ -27,7 +27,7 @@ use yii\widgets\Pjax;
                     </div>
                     <div class="col-md-3 col-md-offset-6">
                         <?php
-                            $url = Url::to(['perguntas/view', 'id' => $answer->id]);
+                            $url = Url::to(['perguntas/view', 'id' => $quest->id]);
                          ?>
                         <a 
                         href="<?=$url?>"

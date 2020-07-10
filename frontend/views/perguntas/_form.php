@@ -6,7 +6,6 @@ use yii\widgets\ActiveForm;
 /* @var $model app\models\Perguntas */
 /* @var $form yii\widgets\ActiveForm */
 ?>
-
 <?php $form = ActiveForm::begin([
     'id' => "formQuestion", 
     'options' => [
@@ -16,7 +15,14 @@ use yii\widgets\ActiveForm;
     <div class="row">
         <div class="col-md-12">
                 <!-- <div class="col-md-5"><h3>Nome do usuario</h3></div> -->
-                <div class="col-md-7"><?= $form->field($model, 'materia')->textInput(['maxlength' => true]) ?></div>
+                <div class="col-md-7">
+                    <?
+                    echo $form->field($model, 'materia')->dropDownList(
+                        $materia,
+                        ['prompt' => 'Selecione...']
+                    );
+                    ?>
+                </div>
                 <div class="col-md-12">
                     <?= $form->field($model, 'pergunta')->textarea(['rows' => 6]) ?>
                 </div>
