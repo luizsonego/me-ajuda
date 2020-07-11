@@ -2,6 +2,7 @@
 
 namespace app\models;
 
+use common\models\Aluno;
 use Yii;
 
 /**
@@ -67,7 +68,7 @@ class Perguntas extends \yii\db\ActiveRecord
         return $this->hasMany(Respostas::className(), ['perguntas_id' => 'id']);
     }
 
-    public static function getLastAnswer()
+    public static function getLastQuest()
     {
         $last = Perguntas::find()
             ->limit(5)
@@ -86,5 +87,15 @@ class Perguntas extends \yii\db\ActiveRecord
             ->all();
 
         return $my;
+    }
+
+    public function getAluno()
+    {
+        return $this->hasOne(Aluno::className(), ['id' => 'user_id']);
+    }
+
+    public function getMaterias()
+    {
+        return $this->hasOne(Materias::className(), ['id' => 'materia']);
     }
 }

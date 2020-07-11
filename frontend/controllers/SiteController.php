@@ -1,6 +1,7 @@
 <?php
 namespace frontend\controllers;
 
+use app\models\Materias;
 use app\models\Perguntas;
 use frontend\models\ResendVerificationEmailForm;
 use frontend\models\VerifyEmailForm;
@@ -79,29 +80,26 @@ class SiteController extends Controller
     public function actionIndex()
     {
         $formCreateQuestions = new Perguntas();
-        $lastAnswer = Perguntas::getLastAnswer();
+        $lastQuest = Perguntas::getLastQuest();
+
+        $materia = Materias::getDataList();
         
         $post = \Yii::$app->request->post();
         if (!Yii::$app->user->isGuest) {
             $formCreateQuestions->user_id = Yii::$app->user->identity->id;
         }
+        
         if ($formCreateQuestions->load(Yii::$app->request->post()) && $formCreateQuestions->save()) {
             // \Yii::$app->getSession()->setFlash('success', 'Pergunta cadastrada com sucesso!!!');
             return 1;
         }
             return $this->render('index', array(
                 'model' => $formCreateQuestions,
-                'last' => $lastAnswer
+                'last' => $lastQuest,
+                'materia' => $materia
             ));
     }
 
-    // public function actionLasts()
-    // {
-    //     $model = new Perguntas();
-    //     return $this->renderPartial('last', array(
-    //         'model' => $model
-    //     ));
-    // }
     /**
      * Logs in a user.
      *

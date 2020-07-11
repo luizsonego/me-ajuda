@@ -4,12 +4,12 @@ namespace app\models;
 
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use app\models\Perguntas;
+use app\models\Materias;
 
 /**
- * PerguntasSearch represents the model behind the search form of `app\models\Perguntas`.
+ * MateriasSearch represents the model behind the search form of `app\models\Materias`.
  */
-class PerguntasSearch extends Perguntas
+class MateriasSearch extends Materias
 {
     /**
      * {@inheritdoc}
@@ -18,7 +18,7 @@ class PerguntasSearch extends Perguntas
     {
         return [
             [['id', 'user_id'], 'integer'],
-            [['pergunta', 'materia', 'instituicao', 'created_at', 'updated_at'], 'safe'],
+            [['materia', 'created_at', 'updated_at'], 'safe'],
         ];
     }
 
@@ -40,7 +40,7 @@ class PerguntasSearch extends Perguntas
      */
     public function search($params)
     {
-        $query = Perguntas::find();
+        $query = Materias::find();
 
         // add conditions that should always apply here
 
@@ -64,9 +64,7 @@ class PerguntasSearch extends Perguntas
             'user_id' => $this->user_id,
         ]);
 
-        $query->andFilterWhere(['like', 'pergunta', $this->pergunta])
-            ->andFilterWhere(['like', 'materia', $this->materia])
-            ->andFilterWhere(['like', 'instituicao', $this->instituicao]);
+        $query->andFilterWhere(['like', 'materia', $this->materia]);
 
         return $dataProvider;
     }

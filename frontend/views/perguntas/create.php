@@ -8,6 +8,7 @@ $this->title = 'Create Perguntas';
 
     <?= $this->render('_form', [
         'model' => $model,
+        'materia' => $materia
     ]) ?>
 
 </div>

@@ -5,7 +5,11 @@ use yii\helpers\Url;
 
 <div class="row">
     <div class="col-md-7 centered">
-        <?= $this->render('/perguntas/create', array('model' => $model)); ?>
+        <?
+        echo $this->render('/perguntas/create', [
+            'model' => $model,
+            'materia' => $materia,
+        ]); ?>
     </div>
 </div>
 <br>

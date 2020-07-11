@@ -12,7 +12,7 @@ use yii\helpers\Url;
                     </a>
                 </div>
                 <div class="media-body">
-                    <h4 class="media-heading"><?= $my->user_id ?> Nome Usuario</h4>
+                    <h4 class="media-heading"><?= $my->aluno->username ?></h4>
                     <p style="min-height:50px;" class="list-group-item-text"><?= nl2br($my->pergunta) ?></p>
                     <br>
                     <p class="list-group-item-text"><small><?= $my->created_at ?></small></p>
