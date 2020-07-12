@@ -73,15 +73,15 @@ class PerguntasController extends Controller
         ]);
     }
 
-    public function actionLasts()
-    {
+    // public function actionLasts()
+    // {
 
-        $model = new Pergunta();
+    //     $model = new Pergunta();
         
-        return $this->render('last', [
-            'model' => $model
-        ]);
-    }
+    //     return $this->render('last', [
+    //         'model' => $model
+    //     ]);
+    // }
 
     public function actionMyquestions()
     {

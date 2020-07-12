@@ -2,7 +2,12 @@
 use yii\helpers\Url;
 use yii\widgets\Pjax;
 ?>
-
+<?
+// echo "<pre>";
+// print_r($model);
+// echo "</pre>";
+// die;
+?>
 <h3 class="text-center">Últimas perguntas</h3>
 <?php Pjax::begin(); ?>
 <?php foreach ($model as $key => $quest): ?>
@@ -20,11 +25,6 @@ use yii\widgets\Pjax;
             <hr>
             <p>
                 <div class="row">
-                    <div class="col-md-3">
-                        <span style="color:#d44572;">
-                            <i class="fas fa-apple-alt fa-2x"></i> 100
-                        </span>
-                    </div>
                     <div class="col-md-3 col-md-offset-6">
                         <?php
                             $url = Url::to(['perguntas/view', 'id' => $quest->id]);

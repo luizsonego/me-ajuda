@@ -74,7 +74,7 @@ class Perguntas extends \yii\db\ActiveRecord
             ->limit(5)
             ->orderBy('id DESC')
             ->all();
-
+            
         return $last;
     }
 

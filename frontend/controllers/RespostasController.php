@@ -72,8 +72,7 @@ class RespostasController extends Controller
             \Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
             return 1;
             // return $this->redirect(['view', 'id' => $model->id]);
-        }
-        else{
+        } else {
             return $this->renderAjax('create', [
                 'model' => $model,
             ]);
@@ -99,6 +98,30 @@ class RespostasController extends Controller
             'model' => $model,
         ]);
     }
+
+    /**
+     * Is button likead to resposta
+     */
+    public function actionLikeable($id, $now)
+    {
+        $model = $this->findModel($id);
+        $model->is_likeable = $now + 1;
+
+        $model->save();
+        return 1;
+    }
+
+    /**
+     * Is button is best to resposta
+     */
+    public function actionIsbest($id)
+    {
+        $model = $this->findModel($id);
+
+        $model->save();
+        return 1;
+    }
+
 
     /**
      * Deletes an existing Respostas model.

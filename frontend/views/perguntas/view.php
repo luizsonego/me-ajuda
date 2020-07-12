@@ -1,5 +1,6 @@
 <?php
 
+use yii\helpers\Url;
 use yii\helpers\Html;
 use yii\widgets\DetailView;
 use yii\widgets\Pjax;
@@ -32,7 +33,7 @@ $this->title = $model->id;
                 </div>
                 <div class="row">
                     <hr>
-                    <p class="pull-left"><?= $model->materias->materia?></p>
+                    <p class="pull-left"><?= $model->materias->materia ?></p>
                     <p class="pull-right"><small><?= $model->created_at ?></small></p>
                 </div>
             </div>
@@ -67,9 +68,25 @@ $this->title = $model->id;
                         <p>
                             <div class="row">
                                 <div class="col-md-3">
-                                    <span style="color:#d44572;">
-                                        <i class="fas fa-apple-alt fa-2x"></i> <?= rand(1000, 5000) ?>
-                                    </span>
+                                    <!-- <button id="_clickToLike" class="fas fa-apple-alt fa-2x" value="<?= $resposta->id ?>" data-value="<?= $resposta->is_likeable ?>">
+                                        <?= $resposta->is_likeable ?>
+                                    </button> -->
+                                    <?=
+                                    Html::button('<i class="fas fa-apple-alt fa-2x"></i> '.$resposta->is_likeable.'', 
+                                        [ 
+                                            'class' => 'btn', 
+                                            'onclick' => '$.ajax({
+                                                url: "index.php?r=respostas/likeable",
+                                                data: { "id" : '.$resposta->id.', "now" : '.$resposta->is_likeable.' },
+                                                success: function (result) {
+                                                    $.pjax.reload({container: "#answer"})
+                                                },
+                                                error: function (errormessage) {
+                                                    console.log("error", errormessage)
+                                                }
+                                            })' 
+                                        ]);
+                                    ?>
                                 </div>
                             </div>
                         </p>
