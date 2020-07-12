@@ -14,6 +14,7 @@ use Yii;
  * @property string $updated_at
  * @property int|null $user_id
  * @property int|null $perguntas_id
+ * @property int $is_likeable
  *
  * @property Pergunta $perguntas
  */
@@ -36,7 +37,7 @@ class Respostas extends \yii\db\ActiveRecord
             [['resposta'], 'required'],
             [['resposta'], 'string'],
             [['created_at', 'updated_at'], 'safe'],
-            [['user_id', 'perguntas_id'], 'integer'],
+            [['user_id', 'perguntas_id', 'is_likeable'], 'integer'],
             [['instituicao'], 'string', 'max' => 255],
             [['perguntas_id'], 'exist', 'skipOnError' => true, 'targetClass' => Perguntas::className(), 'targetAttribute' => ['perguntas_id' => 'id']],
         ];
@@ -55,6 +56,7 @@ class Respostas extends \yii\db\ActiveRecord
             'updated_at' => 'Updated At',
             'user_id' => 'User ID',
             'perguntas_id' => 'Perguntas ID',
+            'is_likeable' => 'Likes',
         ];
     }
 
@@ -66,5 +68,12 @@ class Respostas extends \yii\db\ActiveRecord
     public function getPerguntas()
     {
         return $this->hasOne(Perguntas::className(), ['id' => 'perguntas_id']);
+    }
+
+    public static function sumLikeable($id)
+    {
+        $models = Perguntas::find(['id' => $id])->asArray()->one();
+
+        return $models;
     }
 }
