@@ -78,6 +78,17 @@ class Perguntas extends \yii\db\ActiveRecord
         return $last;
     }
 
+    public static function getMyLastQuest()
+    {
+        $last = Perguntas::find()
+            ->where(['user_id' => Yii::$app->user->identity->id])
+            ->limit(1)
+            ->orderBy('id DESC')
+            ->all();
+            
+        return $last;
+    }
+
     public static function getMyQuestions()
     {
         $my = Perguntas::find()
@@ -94,7 +105,7 @@ class Perguntas extends \yii\db\ActiveRecord
         return $this->hasOne(Aluno::className(), ['id' => 'user_id']);
     }
 
-    public function getMaterias()
+    public function getOnematerias()
     {
         return $this->hasOne(Materias::className(), ['id' => 'materia']);
     }

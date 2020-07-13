@@ -50,6 +50,7 @@ class PerguntasController extends Controller
         return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
+            'materia' => $materia
         ]);
     }
 
@@ -72,16 +73,6 @@ class PerguntasController extends Controller
             'answer' => $createAnswer,
         ]);
     }
-
-    // public function actionLasts()
-    // {
-
-    //     $model = new Pergunta();
-        
-    //     return $this->render('last', [
-    //         'model' => $model
-    //     ]);
-    // }
 
     public function actionMyquestions()
     {

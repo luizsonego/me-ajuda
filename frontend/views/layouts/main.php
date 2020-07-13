@@ -39,13 +39,12 @@ FoundationAsset::register($this);
 <body>
     <?php $this->beginBody() ?>
 
-    <div class="wrap">
-        <?php
+    <?php
         NavBar::begin([
-            'brandLabel' => Yii::$app->name,
+            'brandLabel' => '<img alt="Brand" src="frontend/web/assets/logo.svg" width="120">',
             'brandUrl' => Yii::$app->homeUrl,
             'options' => [
-                'class' => 'navbar-inverse navbar-fixed-top',
+                'class' => 'navbar-default navbar-fixed-top',
             ],
         ]);
         $menuItems = [
@@ -53,7 +52,10 @@ FoundationAsset::register($this);
         ];
         if (Yii::$app->user->isGuest) {
             $menuItems[] = ['label' => 'Signup', 'url' => ['/site/signup']];
-            $menuItems[] = ['label' => 'Login', 'url' => ['/site/login']];
+            $menuItems[] = [
+                'label' => 'login',
+                'img' => 'frontend/web/assets/user_auth.svg', 
+                'url' => ['/site/login']];
         } else {
             $menuItems[] = '<li>'
                 . Html::beginForm(['/site/logout'], 'post')
@@ -70,23 +72,45 @@ FoundationAsset::register($this);
         ]);
         NavBar::end();
         ?>
+    <!-- <nav class="navbar">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#">
+                    <img alt="Brand" src="frontend/web/assets/logo.svg">
+                </a>
+            </div>
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <? if (!Yii::$app->user->isGuest) {
+                        echo Html::a('<img alt="Brand" src="frontend/web/assets/user_auth.svg" width="45">', array('/site/login'));
+                    }
+                    else {
+                        echo Html::a('<img alt="Brand" src="frontend/web/assets/user_guest.svg" width="45">', array('/site/login'));
+                     }
+                     ?>
+                </li>
+            </ul>
+        </div>
+    </nav> -->
 
+    <div class="wrap">
         <div class="container">
             <?= Alert::widget() ?>
             <?= $content ?>
         </div>
     </div>
 
+    
     <footer class="marketing-site-footer">
         <div class="row medium-unstack">
             <div class="medium-4 columns">
                 <h4 class="marketing-site-footer-name">&nbsp;</h4>
                 <ul class="menu marketing-site-footer-bottom-links">
-                        <li><a href="#">Home</a></li>
-                        <li><a href="#">Perguntas</a></li>
-                        <li><a href="#">Registrar</a></li>
-                        <li><a href="#">Login</a></li>
-                    </ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Perguntas</a></li>
+                    <li><a href="#">Registrar</a></li>
+                    <li><a href="#">Login</a></li>
+                </ul>
             </div>
             <div class="medium-4 columns">
             </div>

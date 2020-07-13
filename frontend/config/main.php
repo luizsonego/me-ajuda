@@ -12,6 +12,13 @@ return [
     'bootstrap' => ['log'],
     'controllerNamespace' => 'frontend\controllers',
     'components' => [
+        'assetManager' => [
+            'class' => 'yii\web\AssetManager',
+            'forceCopy' => true,          
+        ],
+        'assetManager' => [
+            'linkAssets' => false,
+        ],
         // 'view' => [
         //     'theme' => [
         //         'pathMap' => [

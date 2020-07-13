@@ -2,31 +2,26 @@
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
-
-/* @var $this yii\web\View */
-/* @var $model app\models\Respostas */
-/* @var $form yii\widgets\ActiveForm */
-// echo '<pre>';
-// $request = Yii::$app->request;
-// print_r($request->get('id', 1));
-// echo '</pre>';
-// die;
 ?>
 <div class="respostas-form">
     <?php $form = ActiveForm::begin(['id' => $model->formName()]); ?>
-        <?php
-            $request = Yii::$app->request;
-            $id = $request->get('id', 1);
-        ?>
-        <!-- <h4 class="media-heading"> Nome Usuario que responde <span class="badge"></span></h4> -->
-        <p class="list-group-item-text">
-            <?= $form->field($model, 'resposta')->textarea(['rows' => 6]) ?>
-        </p>
-        <p class="list-group-item-text"><small></small></p>
-        <div class="hidden">
-            <?= $form->field($model, 'perguntas_id')->textInput(['readonly' => true, 'value' => $id]) ?>
+    <?php
+        $request = Yii::$app->request;
+        $id = $request->get('id', 1);
+    ?>
+    <p class="list-group-item-text">
+        <?= $form->field($model, 'resposta')->textarea(['rows' => 6])->label(false) ?>
+    </p>
+    <p class="list-group-item-text"><small></small></p>
+    <div class="hidden">
+        <?= $form->field($model, 'perguntas_id')->textInput(['readonly' => true, 'value' => $id]) ?>
+    </div>
+    <div class="col-md-4"></div>
+    <div class="col-md-8">
+        <div class="form-group pull-right">
+            <?= Html::submitButton(Yii::t('app', 'Responder'), ['class' => 'btn btn-success btn-block']) ?>
         </div>
-        <?= Html::submitButton(Yii::t('app', 'Responder'), ['class' => 'btn btn-success']) ?>
+    </div>
     <?php ActiveForm::end(); ?>
 </div>
 
@@ -56,6 +51,6 @@ $('form#{$model->formName()}').on('beforeSubmit', function(e) {
     e.preventDefault();         // can be omitted
 });
 JS;
- 
+
 $this->registerJs($js);
 ?>
