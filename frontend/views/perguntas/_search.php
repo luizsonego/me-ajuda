@@ -1,4 +1,5 @@
 <?php
+
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 ?>
@@ -17,7 +18,13 @@ use yii\widgets\ActiveForm;
             <?= $form->field($model, 'pergunta') ?>
         </div>
         <div class="cell large-auto">
-            <?= $form->field($model, 'materia') ?>
+            <!-- <?= $form->field($model, 'materia') ?> -->
+            <?
+            echo $form->field($model, 'materia')->dropDownList(
+                $materia,
+                ['prompt' => 'Matéria']
+            );
+            ?>
         </div>
         <div class="cell large-auto">
             <?= $form->field($model, 'instituicao') ?>

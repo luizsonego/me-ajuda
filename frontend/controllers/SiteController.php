@@ -1,4 +1,5 @@
 <?php
+
 namespace frontend\controllers;
 
 use app\models\Materias;
@@ -83,21 +84,31 @@ class SiteController extends Controller
         $lastQuest = Perguntas::getLastQuest();
 
         $materia = Materias::getDataList();
-        
-        $post = \Yii::$app->request->post();
+
         if (!Yii::$app->user->isGuest) {
+            $getMyLastQuest = Perguntas::getMyLastQuest();
             $formCreateQuestions->user_id = Yii::$app->user->identity->id;
         }
-        
+
         if ($formCreateQuestions->load(Yii::$app->request->post()) && $formCreateQuestions->save()) {
             // \Yii::$app->getSession()->setFlash('success', 'Pergunta cadastrada com sucesso!!!');
             return 1;
         }
+
+        if (!Yii::$app->user->isGuest) {
             return $this->render('index', array(
                 'model' => $formCreateQuestions,
                 'last' => $lastQuest,
+                'mylast' => $getMyLastQuest,
                 'materia' => $materia
             ));
+        }
+        return $this->render('index', array(
+            'model' => $formCreateQuestions,
+            'last' => $lastQuest,
+            'materia' => $materia
+        ));
+
     }
 
     /**
