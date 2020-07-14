@@ -2,19 +2,15 @@
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
+
+$request = Yii::$app->request;
+$id = $request->get('id', 1);
+
 ?>
-<div class="respostas-form">
-    <?php $form = ActiveForm::begin(['id' => $model->formName()]); ?>
-    <?php
-        $request = Yii::$app->request;
-        $id = $request->get('id', 1);
-    ?>
-    <p class="list-group-item-text">
+<?php $form = ActiveForm::begin(['id' => $model->formName()]); ?>
+<div class="row">
+    <div class="col-md-12">
         <?= $form->field($model, 'resposta')->textarea(['rows' => 6])->label(false) ?>
-    </p>
-    <p class="list-group-item-text"><small></small></p>
-    <div class="hidden">
-        <?= $form->field($model, 'perguntas_id')->textInput(['readonly' => true, 'value' => $id]) ?>
     </div>
     <div class="col-md-4"></div>
     <div class="col-md-8">
@@ -22,9 +18,11 @@ use yii\widgets\ActiveForm;
             <?= Html::submitButton(Yii::t('app', 'Responder'), ['class' => 'btn btn-success btn-block']) ?>
         </div>
     </div>
-    <?php ActiveForm::end(); ?>
+    <div class="hidden">
+        <?= $form->field($model, 'perguntas_id')->textInput(['readonly' => true, 'value' => $id]) ?>
+    </div>
 </div>
-
+<?php ActiveForm::end(); ?>
 
 <?php
 $js = <<<JS

@@ -23,6 +23,7 @@ use yii\widgets\ActiveForm;
     </div>
     <div class="col-md-8">
     <div class="form-group pull-right">
+        
         <?= Html::submitButton('Perguntar', ['class' => 'btn btn-success ']) ?>
     </div>
     </div>
