@@ -24,14 +24,16 @@ FoundationAsset::register($this);
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <?php $this->registerCsrfMetaTags() ?>
     <title><?= Html::encode($this->title) ?></title>
-    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+    <!-- <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" /> -->
     <style>
         .centered {
             margin: 0 auto !important;
             float: none !important;
         }
+        #user_img_menu a{
+            padding: 10px;
+        }
     </style>
-    <script src="https://use.fontawesome.com/a2ec73cb6b.js"></script>
 
     <?php $this->head() ?>
 </head>
@@ -57,41 +59,38 @@ FoundationAsset::register($this);
                 'img' => 'frontend/web/assets/user_auth.svg', 
                 'url' => ['/site/login']];
         } else {
-            $menuItems[] = '<li>'
-                . Html::beginForm(['/site/logout'], 'post')
-                . Html::submitButton(
-                    'Logout (' . Yii::$app->user->identity->username . ')',
-                    ['class' => 'btn btn-link logout']
-                )
-                . Html::endForm()
-                . '</li>';
+            $menuItems[] = [
+                'label' => Html::img('frontend/web/assets/user_auth.svg', ['width' => '30px','height' => '30px']).'',
+                'items' => [
+                    [
+                         'label' => Yii::$app->user->identity->username, 
+                         'options' => ['style' =>'text-align: center;font-size: 1.5em;']
+                    ],
+                    '<li class="divider"></li>',
+                    ['label' => 'Minhas Perguntas', 'url' => ['/perguntas/myquestions']],
+                    '<li class="divider"></li>',
+                    [
+                        'label' => 
+                            Html::beginForm(['/site/logout'], 'post')
+                            . Html::submitButton(
+                                'Logout',
+                                ['class' => 'btn-link logout']
+                            )
+                            . Html::endForm(), 
+                        'url' => ['/perguntas/myquestions'],
+                    ],
+                ],
+                'options' => ['id' =>'user_img_menu']
+            ];
+            
         }
         echo Nav::widget([
             'options' => ['class' => 'navbar-nav navbar-right'],
             'items' => $menuItems,
+            'encodeLabels' => false,
         ]);
         NavBar::end();
         ?>
-    <!-- <nav class="navbar">
-        <div class="container-fluid">
-            <div class="navbar-header">
-                <a class="navbar-brand" href="#">
-                    <img alt="Brand" src="frontend/web/assets/logo.svg">
-                </a>
-            </div>
-            <ul class="nav navbar-nav navbar-right">
-                <li>
-                    <? if (!Yii::$app->user->isGuest) {
-                        echo Html::a('<img alt="Brand" src="frontend/web/assets/user_auth.svg" width="45">', array('/site/login'));
-                    }
-                    else {
-                        echo Html::a('<img alt="Brand" src="frontend/web/assets/user_guest.svg" width="45">', array('/site/login'));
-                     }
-                     ?>
-                </li>
-            </ul>
-        </div>
-    </nav> -->
 
     <div class="wrap">
         <div class="container">

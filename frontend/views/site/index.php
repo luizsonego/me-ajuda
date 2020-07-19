@@ -14,19 +14,20 @@ use yii\helpers\Url;
     </div>
 </div>
 <br>
-<?
-if (!Yii::$app->user->isGuest){
-?>
-<div class="row">
-    <div class="col-md-8 centered">
-        <h3 class="text-center title-section myquestion">MINHAS PERGUNTAS</h3>
-        <?= $this->render('/perguntas/mylast', array('model' => $mylast)); ?>
-        <?php
-        $url = Url::to(['perguntas/myquestions']);
-        ?>
-        <a href="<?= $url ?>" class="btn btn-block btn-dark btn-outline-dark btn-default">Responder</a>
+<? if (!Yii::$app->user->isGuest){ ?>
+    <div class="row">
+        <div class="col-md-8 centered">
+            <h3 class="text-center title-section myquestion">MINHAS PERGUNTAS</h3>
+            <?= $this->render('/perguntas/mylast', array('model' => $mylast)); ?>
+        </div>
     </div>
-</div>
+    <?php $urlAll = Url::to(['/perguntas/myquestions']); ?>
+    <br>
+    <div class="row">
+        <div class="col-md-4 centered">
+            <a href="<?= $urlAll ?>" class="btn btn-block btn-dark btn-outline-dark All">Todas minhas perguntas</a>
+        </div>
+    </div>
 <? } ?>
 <br>
 <div class="row">
@@ -37,15 +38,87 @@ if (!Yii::$app->user->isGuest){
 </div>
 
 <style>
-    .title-section{
+    .title-section {
         font-size: 1.4em;
         margin-bottom: 30px;
         line-height: 2.3;
     }
-    .myquestion{
+
+    .myquestion {
         border-bottom: 2px solid #0161cd;
     }
-    .last{
+
+    .last {
         border-bottom: 2px solid #cc0202;
+    }
+
+    .question {
+        border: 1px solid #ccc;
+        padding: 10px;
+        border-radius: 1px;
+        min-height: 50px;
+    }
+
+    .dados {
+        min-height: 15px;
+        padding: 10px;
+        border-left: 1px solid #ccc;
+        border-right: 1px solid #ccc;
+        border-bottom: 1px solid #ccc;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .action {
+        min-height: 15px;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .acao {
+        display: flex;
+        width: 200px;
+        justify-content: end;
+        float: right;
+        margin: 10px 0;
+    }
+
+    .btn.All {
+        background-color: #333;
+        color: #fff;
+        border-radius: 1px;
+
+    }
+
+    .action .btn.mylast {
+        background-color: #0161cd;
+        color: #fff;
+        border-radius: 1px;
+    }
+
+    .action .btn.last {
+        background-color: #c33f2c;
+        color: #fff;
+        border-radius: 1px;
+    }
+
+    .ico_user {
+        background-color: #ccc;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        vertical-align: middle;
+        top: 10px;
+        position: relative;
+    }
+
+    .ver-mais {
+        background-color: #333;
+        color: #fefefe;
+        border-radius: 1px;
+        margin: 15px 0;
+        display: block;
+        justify-content: center;
+        width: 200px;
     }
 </style>

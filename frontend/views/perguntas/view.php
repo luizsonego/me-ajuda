@@ -4,8 +4,6 @@ use yii\helpers\Url;
 use yii\helpers\Html;
 use yii\widgets\DetailView;
 use yii\widgets\Pjax;
-/* @var $this yii\web\View */
-/* @var $model app\models\Perguntas */
 
 $this->title = $model->id;
 \yii\web\YiiAsset::register($this);
@@ -21,12 +19,13 @@ $this->title = $model->id;
                 </div>
                 <div class="dados">
                     <div class="dado"><?= $model->onematerias->materia ?></div>
-                    <div class="dado"><?= $model->created_at ?></div>
+                    <div class="dado"><?= date('d F \d\e Y', strtotime($model->created_at)) ?></div>
                 </div>
                 <div class="action">
                     <div class="user">
-                        <!-- <h4 class="media-heading"><?= $model->aluno->username ?></h4> -->
-                        <div class="ico_user"></div>
+                        <div class="ico_user" alt="<?= $model->aluno->username ?>" title="<?= $model->aluno->username ?>">
+                            <img src="frontend/web/assets/users_ico/user-005.svg" alt="">
+                        </div>
                     </div>
                 </div>
             </div>
@@ -34,15 +33,13 @@ $this->title = $model->id;
     </div>
 </div>
 <br>
-<br>
+<hr>
 <div class="row">
     <div class="col-md-8 centered">
-        <div class="border">
-            <?= $this->render('/respostas/create', array('model' => $answer)); ?>
-        </div>
+        <?= $this->render('/respostas/create', array('model' => $answer)); ?>
     </div>
 </div>
-
+<br><br>
 <div class="row">
     <?php Pjax::begin(['id' => 'answer']); ?>
     <?php foreach ($model->respostas as $resposta) : ?>
@@ -55,7 +52,7 @@ $this->title = $model->id;
                     </div>
                     <div class="dados">
                         <div class="dado"></div>
-                        <div class="dado"><?= $resposta->created_at ?></div>
+                        <div class="dado"><?= date('d F \d\e Y', strtotime($resposta->created_at)) ?></div>
                     </div>
                     <div class="action">
                         <div class="col-md-3">
@@ -87,8 +84,8 @@ $this->title = $model->id;
             </div>
         </div>
         <br>
-        <?php endforeach; ?>
-        <?php Pjax::end(); ?>
+    <?php endforeach; ?>
+    <?php Pjax::end(); ?>
 </div>
 
 <style>
@@ -115,20 +112,7 @@ $this->title = $model->id;
         justify-content: space-between;
     }
 
-    .acao {
-        display: flex;
-        width: 200px;
-        justify-content: end;
-        float: right;
-        margin: 10px 0;
-    }
 
-
-    .action .btn {
-        /* background-color: #c33f2c;
-        color: #fff; */
-        border-radius: 1px;
-    }
 
     .ico_user {
         background-color: #ccc;
@@ -140,13 +124,4 @@ $this->title = $model->id;
         position: relative;
     }
 
-    .ver-mais {
-        background-color: #333;
-        color: #fefefe;
-        border-radius: 1px;
-        margin: 15px 0;
-        display: block;
-        justify-content: center;
-        width: 200px;
-    }
 </style>

@@ -18,7 +18,6 @@ use yii\widgets\ActiveForm;
             <?= $form->field($model, 'pergunta') ?>
         </div>
         <div class="cell large-auto">
-            <!-- <?= $form->field($model, 'materia') ?> -->
             <?
             echo $form->field($model, 'materia')->dropDownList(
                 $materia,
@@ -32,11 +31,18 @@ use yii\widgets\ActiveForm;
 
         <div class="cell large-auto">
             <label>&nbsp;</label>
-            <?= Html::submitButton('Search', ['class' => 'button radius bordered  primary']) ?>
-            <?= Html::resetButton('Reset', ['class' => 'button radius bordered  secondary']) ?>
+            <?= Html::submitButton('Buscar', ['class' => 'button radius bordered  primary']) ?>
+            <?= Html::resetButton('Limpar', ['class' => 'button radius bordered  secondary']) ?>
         </div>
     </div>
 
     <?php ActiveForm::end(); ?>
 
 </div>
+
+<style>
+    select {
+        height: 39px!important;
+        border-radius: 0!important;
+    }
+</style>
