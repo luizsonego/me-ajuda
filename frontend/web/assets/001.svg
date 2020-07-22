@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   inkscape:version="1.0 (6e3e5246a0, 2020-05-07)"
+   height="50"
+   width="50"
+   sodipodi:docname="001.svg"
+   version="1.1"
+   viewBox="0 0 50 50"
+   id="ART">
+  <metadata
+     id="metadata29">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <sodipodi:namedview
+     inkscape:current-layer="ART"
+     inkscape:window-maximized="1"
+     inkscape:window-y="0"
+     inkscape:window-x="0"
+     inkscape:cy="32.12879"
+     inkscape:cx="22.574108"
+     inkscape:zoom="10.521749"
+     showgrid="false"
+     id="namedview27"
+     inkscape:window-height="1013"
+     inkscape:window-width="1680"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0"
+     guidetolerance="10"
+     gridtolerance="10"
+     objecttolerance="10"
+     borderopacity="1"
+     bordercolor="#666666"
+     pagecolor="#ffffff" />
+  <defs
+     id="defs4">
+    <style
+       id="style2">.cls-1,.cls-2{fill:#ffc533;}.cls-1,.cls-2,.cls-3,.cls-4{stroke:#000;}.cls-1{stroke-linecap:round;stroke-linejoin:round;}.cls-1,.cls-3{stroke-width:2px;}.cls-2,.cls-3,.cls-4{stroke-miterlimit:10;}.cls-2,.cls-4{stroke-width:4px;}.cls-3{fill:#fff;}.cls-4{fill:#ea6726;}</style>
+  </defs>
+  <rect
+     ry="25"
+     rx="25"
+     y="0"
+     x="0"
+     height="50"
+     width="50"
+     id="rect42"
+     style="fill:#e6e6e6;fill-rule:evenodd;stroke-width:1.01205" />
+  <g
+     transform="matrix(0.24437789,0,0,0.24437789,6.6716583,6.6777668)"
+     id="g40">
+    <path
+       class="cls-1"
+       d="M 69.31,19.83 C 66.65,15 63.58,6.39 60,5.29 c 6.17,0.07 14,3.81 15.56,9 1.91,-5.95 7,-5.95 10.25,-6.17 -4.92,4.4 -5.25,8.81 -5.25,10.8 0,1.99 -10.08,3.08 -11.25,0.91 z"
+       id="path8" />
+    <path
+       class="cls-2"
+       d="m 136.24,94.23 c 0,28.23 -35.47,44.1 -61.24,44.1 -25.77,0 -61.24,-15.86 -61.24,-44.1 C 13.76,82 22,74 28.35,61 38.11,41 42.27,17.17 75,17.17 c 32.73,0 36.89,23.83 46.65,43.83 6.35,13 14.59,21 14.59,33.23 z"
+       id="path10" />
+    <ellipse
+       class="cls-3"
+       cx="52.48"
+       cy="60.75"
+       rx="15.94"
+       ry="10.12"
+       transform="rotate(-79.71,52.481251,60.743484)"
+       id="ellipse12" />
+    <ellipse
+       cx="52.400002"
+       cy="66.690002"
+       rx="6.96"
+       ry="5.3899999"
+       transform="rotate(-79.71,52.396204,66.689259)"
+       id="ellipse14" />
+    <ellipse
+       class="cls-3"
+       cx="97.519997"
+       cy="60.75"
+       rx="10.12"
+       ry="15.94"
+       transform="rotate(-10.29,97.532568,60.788566)"
+       id="ellipse16" />
+    <ellipse
+       cx="97.599998"
+       cy="66.690002"
+       rx="5.3899999"
+       ry="6.96"
+       transform="rotate(-10.29,97.613413,66.729882)"
+       id="ellipse18" />
+    <path
+       class="cls-4"
+       d="m 118.82,114.66 c -8.73,13.53 -6.28,29 -45.94,29 -36.53,0 -34.27,-15.52 -42.32,-29 -5,-8.42 -9.87,-15.56 -5.64,-19.27 4.23,-3.71 16.65,-0.26 25.44,-0.26 8.79,0 9.92,-13.91 22.52,-13.91 13.69,0 14.91,13.91 24.45,13.91 9.54,0 22.9,-3.54 27.62,0.26 4.72,3.8 -0.7,10.85 -6.13,19.27 z"
+       id="path20" />
+    <path
+       d="m 58.6,105.94 c -1.71,-3 -1.25,-5.24 0.38,-6.17 1.63,-0.93 3.8,-0.19 5.51,2.79 1.71,2.98 2.31,7.09 0.68,8 -1.63,0.91 -4.86,-1.64 -6.57,-4.62 z"
+       id="path22" />
+    <path
+       d="m 91.4,105.94 c 1.71,-3 1.25,-5.24 -0.38,-6.17 -1.63,-0.93 -3.8,-0.19 -5.51,2.79 -1.71,2.98 -2.31,7.09 -0.68,8 1.63,0.91 4.86,-1.64 6.57,-4.62 z"
+       id="path24" />
+  </g>
+</svg>

@@ -41,8 +41,9 @@ $this->title = $model->id;
 </div>
 <br><br>
 <div class="row">
+
     <?php Pjax::begin(['id' => 'answer']); ?>
-    <?php foreach ($model->respostas as $resposta) : ?>
+    <?php foreach ($resposta as $resposta) : ?>
         <div class="col-md-8 centered">
             <div class="media border">
                 <div class="media-body">
@@ -55,15 +56,56 @@ $this->title = $model->id;
                         <div class="dado"><?= date('d F \d\e Y', strtotime($resposta->created_at)) ?></div>
                     </div>
                     <div class="action">
-                        <div class="col-md-3">
+                        <div class="col-md-12">
                             <?=
                                 Html::button(
-                                    '<i class="fas fa-apple-alt fa-2x"></i> ' . $resposta->is_likeable . '',
+                                    $resposta->is_likeable,
                                     [
-                                        'class' => 'btn',
+                                        'class' => 'btn btn-apple',
                                         'onclick' => '$.ajax({
-                                                url: "index.php?r=respostas/likeable",
-                                                data: { "id" : ' . $resposta->id . ', "now" : ' . $resposta->is_likeable . ' },
+                                            url: "index.php?r=respostas/likeable",
+                                            data: { "id" : ' . $resposta->id . ', "now" : ' . $resposta->is_likeable . ' },
+                                            success: function (result) {
+                                                $.pjax.reload({container: "#answer"})
+                                            },
+                                            error: function (errormessage) {
+                                                console.log("error", errormessage)
+                                            }
+                                        })'
+                                    ]
+                                );
+                            ?>
+                            <?
+                            if ($resposta->is_best === 1) {
+                                echo '<div class="btn best"><img src="frontend/web/assets/best.svg" /></div>';
+                            }
+                            if($model->user_id === Yii::$app->user->identity->id && $hasBatter != 1){
+                                echo Html::button(
+                                    'Melhor resposta',
+                                    [
+                                        'class' => 'btn btn-best',
+                                        'onclick' => '$.ajax({
+                                            url: "index.php?r=respostas/best",
+                                            data: { "id" : ' . $resposta->id . ' },
+                                            success: function (result) {
+                                                $.pjax.reload({container: "#answer"})
+                                            },
+                                            error: function (errormessage) {
+                                                console.log("error", errormessage)
+                                            }
+                                        })'
+                                    ]
+                                );
+                            }
+                            if($model->user_id === Yii::$app->user->identity->id){
+                                if ($resposta->is_best === 1){
+                                    echo Html::button(
+                                        'Remover melhor resposta',
+                                        [
+                                            'class' => 'btn btn-best',
+                                            'onclick' => '$.ajax({
+                                                url: "index.php?r=respostas/removebest",
+                                                data: { "id" : ' . $resposta->id . ' },
                                                 success: function (result) {
                                                     $.pjax.reload({container: "#answer"})
                                                 },
@@ -71,9 +113,11 @@ $this->title = $model->id;
                                                     console.log("error", errormessage)
                                                 }
                                             })'
-                                    ]
-                                );
-                            ?>
+                                        ]
+                                    );
+                                }
+                            }
+                        ?>
                         </div>
                         <div class="user">
                             <!-- <h4 class="media-heading"><?= $resposta->user_id ?></h4> -->
@@ -124,4 +168,37 @@ $this->title = $model->id;
         position: relative;
     }
 
+    .best {
+        width: 50px;
+        left: 20px;
+        height: 30px;
+        top: 13px;
+        cursor: default;
+    }
+
+    .btn-best {
+        background-color: #fff;
+        box-shadow: 0 0 2px 0 #555;
+        margin-top: 10px;
+        border-radius: 5px;
+    }
+
+    .btn-apple {
+        padding-right: 20px;
+        padding-left: 35px;
+        background-color: #fff;
+        box-shadow: 0 0 2px 0 #555;
+        margin-top: 10px;
+        border-radius: 5px;
+    }
+
+    .btn-apple:before {
+        width: 25px;
+        content: "";
+        background: url('frontend/web/assets/likeapple.svg') no-repeat;
+        position: absolute;
+        left: 20px;
+        height: 30px;
+        top: 13px;
+    }
 </style>

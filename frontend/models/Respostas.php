@@ -15,6 +15,7 @@ use Yii;
  * @property int|null $user_id
  * @property int|null $perguntas_id
  * @property int $is_likeable
+ * @property int $is_best
  *
  * @property Pergunta $perguntas
  */
@@ -37,7 +38,7 @@ class Respostas extends \yii\db\ActiveRecord
             [['resposta'], 'required'],
             [['resposta'], 'string'],
             [['created_at', 'updated_at'], 'safe'],
-            [['user_id', 'perguntas_id', 'is_likeable'], 'integer'],
+            [['user_id', 'perguntas_id', 'is_likeable', 'is_best'], 'integer'],
             [['instituicao'], 'string', 'max' => 255],
             [['perguntas_id'], 'exist', 'skipOnError' => true, 'targetClass' => Perguntas::className(), 'targetAttribute' => ['perguntas_id' => 'id']],
         ];
@@ -57,7 +58,19 @@ class Respostas extends \yii\db\ActiveRecord
             'user_id' => 'User ID',
             'perguntas_id' => 'Perguntas ID',
             'is_likeable' => 'Likes',
+            'is_best' => 'Melhor Resposta',
         ];
+    }
+
+    public function hasBatter($id)
+    {
+        //SELECT COUNT(is_best) FROM respostas WHERE is_best = 1
+        $hasBatter = Respostas::find()
+            ->where(['is_best' => 1])
+            ->andWhere(['perguntas_id' => $id])
+            ->count();
+
+        return $hasBatter;
     }
 
     /**

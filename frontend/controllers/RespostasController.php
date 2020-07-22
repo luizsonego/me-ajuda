@@ -100,7 +100,7 @@ class RespostasController extends Controller
     }
 
     /**
-     * Is button likead to resposta
+     * this button likead to resposta
      */
     public function actionLikeable($id, $now)
     {
@@ -112,11 +112,24 @@ class RespostasController extends Controller
     }
 
     /**
-     * Is button is best to resposta
+     * this button is best to resposta
      */
-    public function actionIsbest($id)
+    public function actionBest($id)
     {
         $model = $this->findModel($id);
+        $model->is_best = 1;
+
+        $model->save();
+        return 1;
+    }
+
+    /**
+     * this button is remove as best to resposta
+     */
+    public function actionRemovebest($id)
+    {
+        $model = $this->findModel($id);
+        $model->is_best = 0;
 
         $model->save();
         return 1;

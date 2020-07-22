@@ -6,6 +6,8 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'ArithmeticError' => $vendorDir . '/symfony/polyfill-php70/Resources/stubs/ArithmeticError.php',
+    'AssertionError' => $vendorDir . '/symfony/polyfill-php70/Resources/stubs/AssertionError.php',
     'Codeception\\Exception\\ExternalUrlException' => $vendorDir . '/codeception/lib-innerbrowser/src/Codeception/Exception/ExternalUrlException.php',
     'Codeception\\Lib\\Connector\\Yii2' => $vendorDir . '/codeception/module-yii2/src/Codeception/Lib/Connector/Yii2.php',
     'Codeception\\Lib\\Connector\\Yii2\\ConnectionWatcher' => $vendorDir . '/codeception/module-yii2/src/Codeception/Lib/Connector/Yii2/ConnectionWatcher.php',
@@ -20,6 +22,8 @@ return array(
     'Codeception\\Module\\Yii2' => $vendorDir . '/codeception/module-yii2/src/Codeception/Module/Yii2.php',
     'Codeception\\Util\\HttpCode' => $vendorDir . '/codeception/lib-innerbrowser/src/Codeception/Util/HttpCode.php',
     'Codeception\\Util\\Shared\\Asserts' => $vendorDir . '/codeception/lib-asserts/src/Codeception/Util/Shared/Asserts.php',
+    'DivisionByZeroError' => $vendorDir . '/symfony/polyfill-php70/Resources/stubs/DivisionByZeroError.php',
+    'Error' => $vendorDir . '/symfony/polyfill-php70/Resources/stubs/Error.php',
     'JsonException' => $vendorDir . '/symfony/polyfill-php73/Resources/stubs/JsonException.php',
     'Normalizer' => $vendorDir . '/symfony/polyfill-intl-normalizer/Resources/stubs/Normalizer.php',
     'PHPUnit\\Exception' => $vendorDir . '/phpunit/phpunit/src/Exception.php',
@@ -413,6 +417,7 @@ return array(
     'PHP_Token_XOR_EQUAL' => $vendorDir . '/phpunit/php-token-stream/src/Token.php',
     'PHP_Token_YIELD' => $vendorDir . '/phpunit/php-token-stream/src/Token.php',
     'PHP_Token_YIELD_FROM' => $vendorDir . '/phpunit/php-token-stream/src/Token.php',
+    'ParseError' => $vendorDir . '/symfony/polyfill-php70/Resources/stubs/ParseError.php',
     'PharIo\\Manifest\\Application' => $vendorDir . '/phar-io/manifest/src/values/Application.php',
     'PharIo\\Manifest\\ApplicationName' => $vendorDir . '/phar-io/manifest/src/values/ApplicationName.php',
     'PharIo\\Manifest\\Author' => $vendorDir . '/phar-io/manifest/src/values/Author.php',
@@ -592,6 +597,7 @@ return array(
     'SebastianBergmann\\Type\\UnknownType' => $vendorDir . '/sebastian/type/src/UnknownType.php',
     'SebastianBergmann\\Type\\VoidType' => $vendorDir . '/sebastian/type/src/VoidType.php',
     'SebastianBergmann\\Version' => $vendorDir . '/sebastian/version/src/Version.php',
+    'SessionUpdateTimestampHandlerInterface' => $vendorDir . '/symfony/polyfill-php70/Resources/stubs/SessionUpdateTimestampHandlerInterface.php',
     'Stringable' => $vendorDir . '/symfony/polyfill-php80/Resources/stubs/Stringable.php',
     'Text_Template' => $vendorDir . '/phpunit/php-text-template/src/Template.php',
     'TheSeer\\Tokenizer\\Exception' => $vendorDir . '/theseer/tokenizer/src/Exception.php',
@@ -602,5 +608,7 @@ return array(
     'TheSeer\\Tokenizer\\TokenCollectionException' => $vendorDir . '/theseer/tokenizer/src/TokenCollectionException.php',
     'TheSeer\\Tokenizer\\Tokenizer' => $vendorDir . '/theseer/tokenizer/src/Tokenizer.php',
     'TheSeer\\Tokenizer\\XMLSerializer' => $vendorDir . '/theseer/tokenizer/src/XMLSerializer.php',
+    'TypeError' => $vendorDir . '/symfony/polyfill-php70/Resources/stubs/TypeError.php',
+    'UnhandledMatchError' => $vendorDir . '/symfony/polyfill-php80/Resources/stubs/UnhandledMatchError.php',
     'ValueError' => $vendorDir . '/symfony/polyfill-php80/Resources/stubs/ValueError.php',
 );

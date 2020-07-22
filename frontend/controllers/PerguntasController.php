@@ -38,19 +38,23 @@ class PerguntasController extends Controller
      */
     public function actionIndex()
     {
+        // $query = Perguntas::find();
+        // $countQuery = clone $query;
+        // $pages = new Pagination(['totalCount' => $countQuery->count()]);
+        // $models = $query->offset($pages->offset)->limit($pages->limit)->all();
+
+        // return $this->render('index', ['models' => $models,'pages' => $pages]);
+
         $searchModel = new PerguntasSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
-
-        // $dataProvider->pagination = [
-        //     'pageSize' => 2,
-        // ];
+        $dataProvider->pagination->pageSize=5;
 
         $materia = Materias::getDataList();
 
         return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
-            'materia' => $materia
+            'materia' => $materia,
         ]);
     }
 
@@ -68,9 +72,18 @@ class PerguntasController extends Controller
             \Yii::$app->getSession()->setFlash('success', 'Pergunta respondida com sucesso!');
         }
 
+        $resposta = Respostas::find()
+            ->where('perguntas_id = ' .$id)
+            ->orderBy(['is_likeable' => SORT_DESC], ['is_best' => SORT_DESC])
+            ->all();
+
+        $hasBatter = Respostas::hasBatter($id);
+
         return $this->render('view', [
+            'resposta' => $resposta,
             'model' => $this->findModel($id),
             'answer' => $createAnswer,
+            'hasBatter' => $hasBatter,
         ]);
     }
 

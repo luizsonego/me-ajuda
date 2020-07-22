@@ -3,6 +3,7 @@
 use yii\widgets\Pjax;
 use yii\helpers\Url;
 use yii\helpers\Html;
+use yii\widgets\ListView;
 
 $this->title = 'Perguntas';
 $this->params['breadcrumbs'][] = $this->title;
@@ -10,10 +11,10 @@ $this->params['breadcrumbs'][] = $this->title;
 <div class="perguntas-index">
 
     <?php Pjax::begin(); ?>
-    
+
     <div class="row">
         <div class="col-md-8 centered">
-            <?php echo $this->render('_search', ['model' => $searchModel, 'materia'=>$materia]); ?>
+            <?php echo $this->render('_search', ['model' => $searchModel, 'materia' => $materia]); ?>
             <?php foreach ($dataProvider->getModels() as $key => $quest) : ?>
                 <div class="media border">
                     <div class="media-body">
@@ -41,12 +42,45 @@ $this->params['breadcrumbs'][] = $this->title;
             <?php endforeach; ?>
         </div>
     </div>
-    <?php Pjax::end(); ?>
 
+
+    <div class="row">
+        <div class="col-md-8 centered" >
+            <?=
+                ListView::widget([
+                    'dataProvider' => $dataProvider,
+                    'itemOptions' => [
+                        'class' => 'item',
+                        'tag' => false,
+                    ],
+                    'options' => [
+                        'tag' => 'nav',
+                        'class' => 'pagination text-center',
+                        'id' => '',
+                        'aria-label' => 'Pagination'
+                    ],
+                    'pager' => [
+                        'firstPageLabel' => '<< Primeira',
+                        'lastPageLabel' => 'Última >>',
+                        'nextPageLabel' => 'Próxima >',
+                        'prevPageLabel' => '< Anterior',
+                        'maxButtonCount' => 3,
+                    ],
+                    'layout' => "{pager}\n{items}\n{summary}"
+                ]);
+            ?>
+        </div>
+    </div>
+
+    <?php Pjax::end(); ?>
 </div>
 
 
 <style>
+    .pagination > li > a, .pagination > li > span {
+        border: none;
+    }
+
     .question {
         border: 1px solid #ccc;
         padding: 10px;

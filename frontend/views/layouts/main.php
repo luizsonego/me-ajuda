@@ -77,7 +77,7 @@ FoundationAsset::register($this);
                                 ['class' => 'btn-link logout']
                             )
                             . Html::endForm(), 
-                        'url' => ['/perguntas/myquestions'],
+                        'url' => ['/site/logout'],
                     ],
                 ],
                 'options' => ['id' =>'user_img_menu']
