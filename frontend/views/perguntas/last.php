@@ -18,7 +18,6 @@ use yii\widgets\Pjax;
             </div>
             <div class="action">
                 <div class="user">
-                    <!-- <h4 class="media-heading"><?= $quest->aluno->username ?></h4> -->
                     <div class="ico_user">
                         <img src="frontend/web/assets/users_ico/user-002.svg" alt="">
                     </div>

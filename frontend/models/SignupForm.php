@@ -58,13 +58,13 @@ class SignupForm extends Model
             $user->setPassword($this->username.$randonNumber);
             $user->status = 10;
             $nopass = true;
-            Yii::$app->session->setFlash('warning', 'Criamos uma senha padrão para você '. $this->username.$randonNumber. '*'. $randonNumber);
+            Yii::$app->session->setFlash('warning', 'Criamos uma senha padrão para você '. $this->username.$randonNumber);
         }else{
             $user->setPassword($this->password);
         }
         $user->generateAuthKey();
         $user->generateEmailVerificationToken();
-        return $user->save() && $this->sendEmail($user, $nopass);
+        return $user->save() && $this->sendEmail($user, $nopass, 'oi');
 
     }
 
@@ -73,13 +73,13 @@ class SignupForm extends Model
      * @param User $user user model to with email should be send
      * @return bool whether the email was sent
      */
-    protected function sendEmail($user, $nopass)
+    protected function sendEmail($user, $nopass, $oi)
     {
         return Yii::$app
             ->mailer
             ->compose(
                 ['html' => $nopass ? 'emailVerifyNoPass-html' : 'emailVerify-html', 'text' => 'emailVerify-text'],
-                ['user' => $user]
+                ['user' => $user],
             )
             ->setFrom([Yii::$app->params['supportEmail'] => Yii::$app->name . ' robot'])
             ->setTo($this->email)

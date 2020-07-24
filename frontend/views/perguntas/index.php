@@ -29,7 +29,7 @@ $this->params['breadcrumbs'][] = $this->title;
                         <div class="action">
                             <div class="user">
                                 <div class="ico_user">
-                                    <img src="frontend/web/assets/users_ico/user-010.svg" alt="<?= $quest->aluno->username ?>" title="<?= $quest->aluno->username ?>">
+                                    <img src="frontend/web/assets/users_ico/user-001.svg" alt="<?= $quest->aluno->username ?>" title="<?= $quest->aluno->username ?>">
                                 </div>
                             </div>
                             <div class="acao">

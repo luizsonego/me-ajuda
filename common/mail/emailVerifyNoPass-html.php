@@ -13,7 +13,8 @@ $verifyLink = Yii::$app->urlManager->createAbsoluteUrl(['site/verify-email', 'to
     <p>Segue os dados de acesso para sua conta</p>
 
     <p>Usuario: <?= Html::encode($user->username) ?></p>
-    <p>Senha: <?= Html::encode($user->password) ?></p>
+    <!-- <p>Senha: <?= Html::encode($user->password) ?></p> -->
+
 
     <p>Obrigado por escolher nossa plataforma</p>
 
