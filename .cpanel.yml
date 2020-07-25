@@ -1,5 +1,5 @@
 ---
 deployment:
       tasks:
-        - export DEPLOYPATH=/home/careersamu/public_html 
-        - /bin/cp -r * $DEPLOYPATH 
+        - export DEPLOYPATH=/home2/faculdade/public_html 
+        - /bin/cp -r * $DEPLOYPATH
