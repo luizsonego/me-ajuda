@@ -12,9 +12,7 @@ class m200726_193501_create_aluno_table extends Migration
      */
     public function safeUp()
     {
-        $this->createTable(
-            '{{%aluno}}',
-            [
+        $this->createTable('{{%aluno}}', [
                 'id' => $this->primaryKey(),
                 'username' => $this->string(255)->notNull(),
                 'email' => $this->string(255)->notNull(),
@@ -34,8 +32,7 @@ class m200726_193501_create_aluno_table extends Migration
                 'gdpr_deleted' => $this->tinyInteger(1),
                 'verification_token' => $this->string(255),
                 'status' => $this->integer(11),
-            ],
-        );
+            ]);
 
         $this->createIndex('idx_aluno_username', '{{%aluno}}', 'username', true);
         $this->createIndex('idx_aluno_email', '{{%aluno}}', 'email', true);
