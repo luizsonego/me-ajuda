@@ -64,7 +64,7 @@ class SignupForm extends Model
         }
         $user->generateAuthKey();
         $user->generateEmailVerificationToken();
-        return $user->save() && $this->sendEmail($user, $nopass, 'oi');
+        return $user->save() && $this->sendEmail($user, $nopass);
 
     }
 
@@ -73,13 +73,13 @@ class SignupForm extends Model
      * @param User $user user model to with email should be send
      * @return bool whether the email was sent
      */
-    protected function sendEmail($user, $nopass, $oi)
+    protected function sendEmail($user, $nopass)
     {
         return Yii::$app
             ->mailer
             ->compose(
                 ['html' => $nopass ? 'emailVerifyNoPass-html' : 'emailVerify-html', 'text' => 'emailVerify-text'],
-                ['user' => $user],
+                ['user' => $user]
             )
             ->setFrom([Yii::$app->params['supportEmail'] => Yii::$app->name . ' robot'])
             ->setTo($this->email)
