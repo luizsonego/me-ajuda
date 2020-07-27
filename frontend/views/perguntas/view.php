@@ -12,6 +12,7 @@ $this->title = $model->id;
 echo '<pre>';
 print_r($model);
 echo '</pre>';
+die;
 ?>
 <div class="row">
     <div class="col-md-8 centered">
