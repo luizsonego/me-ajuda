@@ -8,12 +8,6 @@ use yii\widgets\Pjax;
 $this->title = $model->id;
 \yii\web\YiiAsset::register($this);
 ?>
-<?
-echo '<pre>';
-print_r($model);
-echo '</pre>';
-die;
-?>
 <div class="row">
     <div class="col-md-8 centered">
         <div class="media border">
