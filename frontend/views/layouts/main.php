@@ -43,7 +43,7 @@ FoundationAsset::register($this);
 
     <?php
         NavBar::begin([
-            'brandLabel' => '<img alt="Brand" src="frontend/web/assets/logo.svg" width="120">',
+            'brandLabel' => '<img alt="Brand" src="frontend/web/assets/logo.svg" width="30">',
             'brandUrl' => Yii::$app->homeUrl,
             'options' => [
                 'class' => 'navbar-default navbar-fixed-top',
