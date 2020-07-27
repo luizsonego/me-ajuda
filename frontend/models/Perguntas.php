@@ -100,7 +100,7 @@ class Perguntas extends \yii\db\ActiveRecord
         return $my;
     }
 
-    public static function getAluno()
+    public function getAluno()
     {
         return $this->hasOne(Aluno::className(), ['id' => 'user_id']);
     }
