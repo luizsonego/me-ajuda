@@ -62,7 +62,7 @@ class Respostas extends \yii\db\ActiveRecord
         ];
     }
 
-    public function hasBatter($id)
+    public static function hasBatter($id)
     {
         //SELECT COUNT(is_best) FROM respostas WHERE is_best = 1
         $hasBatter = Respostas::find()
