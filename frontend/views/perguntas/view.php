@@ -8,7 +8,11 @@ use yii\widgets\Pjax;
 $this->title = $model->id;
 \yii\web\YiiAsset::register($this);
 ?>
-
+<?
+echo '<pre>';
+print_r($model);
+echo '</pre>';
+?>
 <div class="row">
     <div class="col-md-8 centered">
         <div class="media border">
@@ -23,11 +27,9 @@ $this->title = $model->id;
                 </div>
                 <div class="action">
                     <div class="user">
-                    <? if (!Yii::$app->user->isGuest) { ?>
                         <div class="ico_user" alt="<?= $model->aluno->username ?>" title="<?= $model->aluno->username ?>">
                             <img src="frontend/web/assets/users_ico/user-005.svg" alt="">
                         </div>
-                    <? } ?>
                     </div>
                 </div>
             </div>
