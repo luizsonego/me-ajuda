@@ -23,9 +23,11 @@ $this->title = $model->id;
                 </div>
                 <div class="action">
                     <div class="user">
+                    <? if (!Yii::$app->user->isGuest) { ?>
                         <div class="ico_user" alt="<?= $model->aluno->username ?>" title="<?= $model->aluno->username ?>">
                             <img src="frontend/web/assets/users_ico/user-005.svg" alt="">
                         </div>
+                    <? } ?>
                     </div>
                 </div>
             </div>
