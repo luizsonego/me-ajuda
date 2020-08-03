@@ -34,7 +34,7 @@ class Perguntas extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['pergunta'], 'required'],
+            [['pergunta', 'materia'], 'required'],
             [['pergunta'], 'string'],
             [['created_at', 'updated_at'], 'safe'],
             [['user_id'], 'integer'],
