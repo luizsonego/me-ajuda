@@ -52,7 +52,7 @@ class Materias extends \yii\db\ActiveRecord
 
     public static function getDataList() { // could be a static func as well
 
-        $models = Materias::find()->asArray()->all();
+        $models = Materias::find()->asArray()->orderBy('materia')->all();
 
         return ArrayHelper::map($models, 'id', 'materia');
 
