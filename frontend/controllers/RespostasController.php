@@ -70,6 +70,7 @@ class RespostasController extends Controller
         }
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             \Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
+            \Yii::$app->getSession()->setFlash('modal', 'Por favor faça login para criar uma pergunta');
             return 1;
             // return $this->redirect(['view', 'id' => $model->id]);
         } else {

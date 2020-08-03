@@ -1,5 +1,6 @@
 <?php
 
+use common\models\AlunoLoginForm;
 use yii\helpers\Url;
 use yii\helpers\Html;
 use yii\widgets\DetailView;
@@ -8,6 +9,7 @@ use yii\widgets\Pjax;
 $this->title = $model->id;
 \yii\web\YiiAsset::register($this);
 ?>
+
 <div class="row">
     <div class="col-md-8 centered">
         <div class="media border">
@@ -35,7 +37,11 @@ $this->title = $model->id;
 <hr>
 <div class="row">
     <div class="col-md-8 centered">
-        <?= $this->render('/respostas/create', array('model' => $answer)); ?>
+        <?php
+        if (!Yii::$app->user->isGuest) {
+            echo $this->render('/respostas/create', array('model' => $answer));
+        }
+        ?>
     </div>
 </div>
 <br><br>
@@ -78,7 +84,7 @@ $this->title = $model->id;
                             if ($resposta->is_best === 1) {
                                 echo '<div class="btn best"><img src="frontend/web/assets/best.svg" /></div>';
                             }
-                            if($model->user_id === Yii::$app->user->identity->id && $hasBatter != 1){
+                            if(!Yii::$app->user->isGuest && $model->user_id === Yii::$app->user->identity->id && $hasBatter != 1){
                                 echo Html::button(
                                     'Melhor resposta',
                                     [
@@ -96,7 +102,7 @@ $this->title = $model->id;
                                     ]
                                 );
                             }
-                            if($model->user_id === Yii::$app->user->identity->id){
+                            if(!Yii::$app->user->isGuest && $model->user_id === Yii::$app->user->identity->id){
                                 if ($resposta->is_best === 1){
                                     echo Html::button(
                                         'Remover melhor resposta',
@@ -130,6 +136,7 @@ $this->title = $model->id;
     <?php endforeach; ?>
     <?php Pjax::end(); ?>
 </div>
+
 
 <style>
     .question {
@@ -201,3 +208,33 @@ $this->title = $model->id;
         top: 13px;
     }
 </style>
+
+<div class="modal fade" id="modalLogin" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-body">
+                Voce precisa estar logado para responder.
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<?php if (Yii::$app->user->isGuest) { ?>
+    <script>
+        window.onload = function() {
+            var url = '8'
+            $.ajax({
+                type: 'POST',
+                url: 'index.php?r=site/login-ajax&url=' + url,
+                success: function(data) {
+                    $('#modalLogin').html(data);
+                    $('#modalLogin').modal();
+                }
+            });
+        };
+    </script>
+<?php } ?>
