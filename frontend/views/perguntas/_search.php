@@ -25,9 +25,9 @@ use yii\widgets\ActiveForm;
             );
             ?>
         </div>
-        <div class="cell large-auto">
+        <!-- <div class="cell large-auto">
             <?= $form->field($model, 'instituicao') ?>
-        </div>
+        </div> -->
 
         <div class="cell large-auto">
             <label>&nbsp;</label>

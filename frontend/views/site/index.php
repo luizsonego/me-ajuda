@@ -16,7 +16,7 @@ use yii\helpers\Url;
 <br>
 <? if (!Yii::$app->user->isGuest){ ?>
     <div class="row">
-        <div class="col-md-8 centered">
+        <div class="col-md-8 centered" id="quest">
             <h3 class="text-center title-section myquestion">MINHAS PERGUNTAS</h3>
             <?= $this->render('/perguntas/mylast', array('model' => $mylast)); ?>
         </div>
@@ -31,7 +31,7 @@ use yii\helpers\Url;
 <? } ?>
 <br>
 <div class="row">
-    <div class="col-md-8 centered">
+    <div class="col-md-8 centered" id="quest">
         <h3 class="text-center title-section last">ÚLTIMAS PERGUNTAS FEITAS</h3>
         <?= $this->render('/perguntas/last', array('model' => $last)); ?>
     </div>

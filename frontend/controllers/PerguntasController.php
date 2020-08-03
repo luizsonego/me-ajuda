@@ -11,6 +11,9 @@ use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use yii\data\Pagination;
 use app\models\Materias;
+use Symfony\Component\BrowserKit\Cookie;
+use yii\web\Cookie as WebCookie;
+use yii\web\Session;
 
 /**
  * PerguntasController implements the CRUD actions for Perguntas model.
@@ -67,17 +70,24 @@ class PerguntasController extends Controller
     public function actionView($id)
     {
         $createAnswer = new Respostas();
-        $post = \Yii::$app->request->post();
         if ($createAnswer->load(Yii::$app->request->post()) && $createAnswer->save()) {
-            \Yii::$app->getSession()->setFlash('success', 'Pergunta respondida com sucesso!');
+            // \Yii::$app->getSession()->setFlash('success', 'Pergunta respondida com sucesso!');
+            // return 1;
         }
-
+        $hasBatter = Respostas::hasBatter($id);
+        if($hasBatter){
+            $orderBy = [
+                'is_best' => SORT_DESC,
+                'is_likeable' => SORT_DESC,
+            ];
+        }else{
+            $orderBy = ['is_likeable' => SORT_DESC];
+        }
         $resposta = Respostas::find()
             ->where('perguntas_id = ' .$id)
-            ->orderBy(['is_likeable' => SORT_DESC], ['is_best' => SORT_DESC])
+            ->orderBy($orderBy)
             ->all();
 
-        $hasBatter = Respostas::hasBatter($id);
 
         return $this->render('view', [
             'resposta' => $resposta,

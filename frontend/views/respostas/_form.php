@@ -23,7 +23,18 @@ $id = $request->get('id', 1);
     </div>
 </div>
 <?php ActiveForm::end(); ?>
-
+<div class="modal fade" id="modalRespondido" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-body">
+            <h4 class="text-center"><small>Pergunta respondida com sucesso.</small></h4>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
 <?php
 $js = <<<JS
 // get the form id and set the event
@@ -35,12 +46,14 @@ $('form#{$model->formName()}').on('beforeSubmit', function(e) {
         \$form.serialize()
     )
     .done(function(result) {
+        
         if(result !== ''){
             $(\$form).trigger('reset')
             $.pjax.reload({container: '#answer'})
+            $('#modalRespondido').modal();
         }else{
-                $("#message").html(result)
-            }
+            $("#message").html(result)
+        }
     }).fail(function(){
         console.log('ERROR =(')
     })

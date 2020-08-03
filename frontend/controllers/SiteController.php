@@ -20,6 +20,8 @@ use frontend\models\ContactForm;
 
 use yii\helpers\Json;
 use yii\web\Response;
+use yii\web\Session;
+use yii\web\Cookie;
 
 /**
  * Site controller
@@ -90,8 +92,27 @@ class SiteController extends Controller
             $formCreateQuestions->user_id = Yii::$app->user->identity->id;
         }
 
-        if ($formCreateQuestions->load(Yii::$app->request->post()) && $formCreateQuestions->save()) {
+
+        if ($formCreateQuestions->load(Yii::$app->request->post())) {
             // \Yii::$app->getSession()->setFlash('success', 'Pergunta cadastrada com sucesso!!!');
+            if (Yii::$app->user->isGuest) {
+                $data = Yii::$app->request->post();
+                $pergunta = $data['Perguntas']['pergunta'];
+                $materia = $data['Perguntas']['materia'];
+                $cookies = Yii::$app->response->cookies;
+                $cookies->add(new Cookie([
+                    'name' => 'myquestbeforelogin',
+                    'value' => $pergunta . '/' . $materia,
+                ]));
+                \Yii::$app->getSession()->setFlash('modal', 'Por favor faça login para criar uma pergunta');
+                $this->redirect(['site/login']);
+                return 2;
+            }
+            $formCreateQuestions->save();
+            $cookies = Yii::$app->response->cookies;
+            $cookies->remove('myquestbeforelogin');
+            unset($cookies['myquestbeforelogin']);
+            \Yii::$app->getSession()->setFlash('modal', 'Pergnta cadastrada com sucesso');
             return 1;
         }
 
@@ -108,7 +129,6 @@ class SiteController extends Controller
             'last' => $lastQuest,
             'materia' => $materia
         ));
-
     }
 
     /**
@@ -131,6 +151,24 @@ class SiteController extends Controller
             return $this->render('login', [
                 'model' => $model,
             ]);
+        }
+    }
+
+    /**
+     * Login ajax
+     */
+    public function actionLoginAjax($url)
+    {
+        if (!Yii::$app->user->isGuest) {
+            return $this->goHome();
+        }
+
+        $model = new AlunoLoginForm();
+        if ($model->load(Yii::$app->request->post()) && $model->login()) {
+            return $this->redirect(['perguntas/view', 'id' => $url]);
+        } else {
+            $model->password = '';
+            return $this->renderAjax('_loginAjax', ['model' => $model]);
         }
     }
 
