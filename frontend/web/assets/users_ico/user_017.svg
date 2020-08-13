@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   inkscape:version="1.0 (b51213c273, 2020-08-10)"
+   height="50"
+   width="50"
+   sodipodi:docname="017.svg"
+   version="1.1"
+   viewBox="0 0 50 50"
+   id="ART">
+  <metadata
+     id="metadata29">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <sodipodi:namedview
+     inkscape:current-layer="ART"
+     inkscape:window-maximized="1"
+     inkscape:window-y="282"
+     inkscape:window-x="1680"
+     inkscape:cy="28.715794"
+     inkscape:cx="21.291362"
+     inkscape:zoom="5.2608745"
+     showgrid="false"
+     id="namedview27"
+     inkscape:window-height="731"
+     inkscape:window-width="1366"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0"
+     guidetolerance="10"
+     gridtolerance="10"
+     objecttolerance="10"
+     borderopacity="1"
+     bordercolor="#666666"
+     pagecolor="#ffffff"
+     inkscape:document-rotation="0"
+     showguides="true"
+     inkscape:guide-bbox="true">
+    <sodipodi:guide
+       position="9.5430107,22.311828"
+       orientation="1,0"
+       id="guide841" />
+    <sodipodi:guide
+       position="24.995844,42.681825"
+       orientation="0,-1"
+       id="guide843" />
+    <sodipodi:guide
+       position="40.582607,29.471094"
+       orientation="1,0"
+       id="guide845" />
+    <sodipodi:guide
+       position="26.516504,7.61161"
+       orientation="0,-1"
+       id="guide847" />
+  </sodipodi:namedview>
+  <defs
+     id="defs4">
+    <style
+       id="style2">.cls-1,.cls-2{fill:#ffc533;}.cls-1,.cls-2,.cls-3,.cls-4{stroke:#000;}.cls-1{stroke-linecap:round;stroke-linejoin:round;}.cls-1,.cls-3{stroke-width:2px;}.cls-2,.cls-3,.cls-4{stroke-miterlimit:10;}.cls-2,.cls-4{stroke-width:4px;}.cls-3{fill:#fff;}.cls-4{fill:#ea6726;}</style>
+    <style
+       id="style849">.cls-1{fill:#b7b4b3;stroke-width:4px;}.cls-1,.cls-2,.cls-3,.cls-4{stroke:#000;stroke-miterlimit:10;}.cls-2{fill:#7a5342;}.cls-2,.cls-4{stroke-linecap:round;}.cls-2,.cls-3,.cls-4{stroke-width:2px;}.cls-3{fill:#c9c9c9;}.cls-4{fill:#4c3e38;}.cls-5{fill:#9b9998;}</style>
+    <style
+       id="style904">.cls-1,.cls-3{fill:#a0683a;}.cls-1,.cls-3,.cls-4,.cls-5,.cls-6,.cls-7{stroke:#000;}.cls-1,.cls-3,.cls-4,.cls-5,.cls-6{stroke-miterlimit:10;}.cls-1,.cls-5,.cls-7{stroke-width:2px;}.cls-2{fill:#70411d;}.cls-3,.cls-4{stroke-width:4px;}.cls-4{fill:#c48a51;}.cls-5{fill:#fff;}.cls-6{fill:#e29149;stroke-width:3px;}.cls-7{fill:none;stroke-linecap:round;stroke-linejoin:round;}</style>
+    <style
+       id="style973">.cls-1,.cls-2{fill:#91592c;}.cls-1,.cls-4,.cls-5,.cls-6,.cls-7{stroke:#000;}.cls-1,.cls-4,.cls-6,.cls-7{stroke-miterlimit:10;}.cls-1,.cls-6{stroke-width:4px;}.cls-3{fill:#683023;}.cls-4{fill:#281614;}.cls-4,.cls-5,.cls-7{stroke-width:2px;}.cls-5{fill:#6d3722;stroke-miterlimit:20;}.cls-6{fill:#5e3730;}.cls-7{fill:#fff;}</style>
+    <style
+       id="style1062">.cls-1,.cls-4{fill:#acb3ba;}.cls-1,.cls-3,.cls-5,.cls-6,.cls-7{stroke:#000;}.cls-1,.cls-3,.cls-5,.cls-7{stroke-miterlimit:10;}.cls-1,.cls-3{stroke-width:4px;}.cls-2{fill:#72767a;}.cls-3{fill:#d1d1d1;}.cls-5{fill:#fff;}.cls-6{fill:none;stroke-linecap:round;stroke-linejoin:round;}.cls-7{fill:#6b6e70;stroke-width:2px;}</style>
+    <style
+       id="style1136">.cls-1{fill:#9ea9ac;}.cls-1,.cls-3,.cls-4,.cls-5,.cls-6{stroke:#000;}.cls-1,.cls-3,.cls-4{stroke-miterlimit:10;}.cls-1,.cls-3,.cls-5{stroke-width:4px;}.cls-2{fill:#5e6c70;}.cls-3,.cls-5{fill:#b4bfc2;}.cls-4{fill:#fceebb;stroke-width:2px;}.cls-5,.cls-6{stroke-linecap:round;stroke-linejoin:round;}.cls-6{fill:#fcfcfc;stroke-width:1.89px;}</style>
+    <style
+       id="style1211">.cls-1{fill:#ccc;stroke-linejoin:round;stroke-width:4px;}.cls-1,.cls-2,.cls-3{stroke:#000;}.cls-2{fill:#bf7d47;stroke-width:3px;}.cls-2,.cls-3{stroke-linecap:round;stroke-miterlimit:10;}.cls-3{fill:#eddbae;}.cls-4{fill:#e2a350;}</style>
+    <style
+       id="style1272">.cls-1,.cls-2{fill:#444;}.cls-1,.cls-4,.cls-5,.cls-6,.cls-8{stroke:#000;stroke-miterlimit:10;}.cls-1{stroke-width:4px;}.cls-3{fill:#bcbcbc;}.cls-4,.cls-6{fill:#333;}.cls-4,.cls-5,.cls-6,.cls-8{stroke-width:2px;}.cls-5{fill:none;}.cls-6{stroke-linecap:round;}.cls-7{fill:#7f7f7f;}.cls-8{fill:#fff797;}</style>
+    <style
+       id="style1357">.cls-1{fill:#b26f2d;}.cls-1,.cls-10,.cls-3,.cls-4,.cls-6,.cls-7,.cls-9{stroke:#000;stroke-miterlimit:10;}.cls-1,.cls-3{stroke-width:4px;}.cls-2{fill:#d8985d;}.cls-3{fill:#dd852f;}.cls-4,.cls-5{fill:#f2c497;}.cls-4,.cls-6,.cls-7,.cls-9{stroke-width:2px;}.cls-6{fill:#efdfc4;}.cls-7{fill:#fff;}.cls-8{fill:#4c331c;}.cls-10,.cls-9{fill:none;}.cls-9{stroke-linecap:round;}</style>
+    <style
+       id="style1449">.cls-1{fill:#40586a;}.cls-2{fill:#d3dae0;stroke-width:4px;}.cls-2,.cls-3,.cls-5,.cls-6,.cls-7{stroke:#000;}.cls-2,.cls-3,.cls-7{stroke-miterlimit:10;}.cls-3,.cls-6{fill:none;}.cls-4{fill:#8095a0;}.cls-5{fill:#001723;}.cls-5,.cls-6{stroke-linecap:round;stroke-linejoin:round;}.cls-5,.cls-7{stroke-width:2px;}.cls-6{stroke-width:3px;}.cls-7{fill:#e8e6ac;}</style>
+    <style
+       id="style1522">.cls-1,.cls-2,.cls-3{fill:#a7b6c4;}.cls-1,.cls-2,.cls-3,.cls-4,.cls-5,.cls-6{stroke:#000;}.cls-1{stroke-linecap:round;stroke-linejoin:round;}.cls-1,.cls-2,.cls-5,.cls-6{stroke-width:2px;}.cls-2,.cls-3,.cls-4,.cls-5,.cls-6{stroke-miterlimit:10;}.cls-3{stroke-width:3px;}.cls-4{fill:#6d839b;stroke-width:4px;}.cls-5{fill:#44372e;}.cls-6{fill:#fff;}.cls-7{fill:#384856;}</style>
+    <style
+       id="style1586">.cls-1{fill:#0980aa;}.cls-1,.cls-3,.cls-4{stroke:#000;stroke-linecap:round;stroke-miterlimit:10;}.cls-1,.cls-3{stroke-width:4px;}.cls-2{fill:#083a47;}.cls-3{fill:#73bbd8;}.cls-4{fill:#86d9e2;stroke-width:2px;}.cls-5{fill:#0d5f75;}</style>
+    <style
+       id="style1666">.cls-1{fill:#edb340;stroke-miterlimit:40;stroke-width:4px;}.cls-1,.cls-3,.cls-4,.cls-7{stroke:#000;}.cls-2{fill:#d3d3d3;}.cls-3{fill:#ffe7bd;}.cls-3,.cls-7{stroke-miterlimit:10;}.cls-3,.cls-4,.cls-7{stroke-width:2px;}.cls-4,.cls-5{fill:#020100;}.cls-4{stroke-linecap:round;stroke-linejoin:round;}.cls-6{fill:#c45e35;}.cls-7{fill:#dd8e2f;}.cls-8{fill:#d6512d;}</style>
+    <style
+       id="style1750">.cls-1{fill:#fceebb;}.cls-1,.cls-2,.cls-3,.cls-4,.cls-5{stroke:#000;stroke-miterlimit:10;}.cls-1,.cls-5{stroke-width:2px;}.cls-2{fill:#7d7d81;stroke-width:3px;}.cls-3{fill:#dbdbdb;}.cls-3,.cls-4{stroke-width:4px;}.cls-4{fill:#e2bda8;}.cls-5{fill:#fff;}</style>
+  </defs>
+  <rect
+     ry="25"
+     rx="25"
+     y="0"
+     x="0"
+     height="50"
+     width="50"
+     id="rect42"
+     style="fill:#e6e6e6;fill-rule:evenodd;stroke-width:1.01205" />
+  <g
+     id="g1979"
+     transform="matrix(0.13994324,0,0,0.13994324,3.448741,3.448741)">
+    <g
+       id="g1914">
+      <path
+         d="m 154,260 c 89.398,0 96,-37.726 96,-104 0,-66.274 -42.981,-120 -96,-120 -53.019,0 -96,53.726 -96,120 0,66.274 6.602,104 96,104 z"
+         style="clip-rule:evenodd;fill:#595959;fill-rule:evenodd;stroke:#000000;stroke-width:8;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10"
+         id="path1894" />
+      <ellipse
+         cx="154"
+         cy="240"
+         rx="40"
+         ry="32"
+         style="clip-rule:evenodd;fill:#777777;fill-rule:evenodd;stroke:#000000;stroke-width:8;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10"
+         id="ellipse1896" />
+      <circle
+         cx="140"
+         cy="230"
+         r="10"
+         style="clip-rule:evenodd;fill:#777777;fill-rule:evenodd;stroke:#000000;stroke-width:8;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10"
+         id="circle1898" />
+      <circle
+         cx="168"
+         cy="230"
+         r="10"
+         style="clip-rule:evenodd;fill:#777777;fill-rule:evenodd;stroke:#000000;stroke-width:8;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10"
+         id="circle1900" />
+      <circle
+         cx="118"
+         cy="172"
+         r="32"
+         style="clip-rule:evenodd;fill:#777777;fill-rule:evenodd;stroke:#000000;stroke-width:8;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10"
+         id="circle1902" />
+      <circle
+         cx="190"
+         cy="172"
+         r="32"
+         style="clip-rule:evenodd;fill:#777777;fill-rule:evenodd;stroke:#000000;stroke-width:8;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10"
+         id="circle1904" />
+      <circle
+         cx="118"
+         cy="172"
+         r="20"
+         style="clip-rule:evenodd;fill:#ffffff;fill-rule:evenodd;stroke:#000000;stroke-width:8;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10"
+         id="circle1906" />
+      <circle
+         cx="190"
+         cy="172"
+         r="20"
+         style="clip-rule:evenodd;fill:#ffffff;fill-rule:evenodd;stroke:#000000;stroke-width:8;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10"
+         id="circle1908" />
+      <circle
+         cx="126"
+         cy="172"
+         r="4"
+         style="clip-rule:evenodd;fill:#777777;fill-rule:evenodd;stroke:#000000;stroke-width:8;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10"
+         id="circle1910" />
+      <circle
+         cx="198"
+         cy="172"
+         r="4"
+         style="clip-rule:evenodd;fill:#777777;fill-rule:evenodd;stroke:#000000;stroke-width:8;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10"
+         id="circle1912" />
+    </g>
+    <g
+       id="g1916" />
+    <g
+       id="g1918" />
+    <g
+       id="g1920" />
+    <g
+       id="g1922" />
+    <g
+       id="g1924" />
+    <g
+       id="g1926" />
+    <g
+       id="g1928" />
+    <g
+       id="g1930" />
+    <g
+       id="g1932" />
+    <g
+       id="g1934" />
+    <g
+       id="g1936" />
+    <g
+       id="g1938" />
+    <g
+       id="g1940" />
+    <g
+       id="g1942" />
+    <g
+       id="g1944" />
+  </g>
+</svg>

@@ -2,6 +2,7 @@
 
 namespace frontend\controllers;
 
+use app\models\AlunoProfile;
 use app\models\Materias;
 use app\models\Perguntas;
 use frontend\models\ResendVerificationEmailForm;
@@ -17,6 +18,7 @@ use frontend\models\PasswordResetRequestForm;
 use frontend\models\ResetPasswordForm;
 use frontend\models\SignupForm;
 use frontend\models\ContactForm;
+use common\models\AuthHandler;
 
 use yii\helpers\Json;
 use yii\web\Response;
@@ -72,7 +74,16 @@ class SiteController extends Controller
                 'class' => 'yii\captcha\CaptchaAction',
                 'fixedVerifyCode' => YII_ENV_TEST ? 'testme' : null,
             ],
+            'auth' => [
+                'class' => 'yii\authclient\AuthAction',
+                'successCallback' => [$this, 'onAuthSuccess'],
+            ],
         ];
+    }
+
+    public function onAuthSuccess($client)
+    {
+        (new AuthHandler($client))->handle();
     }
 
     /**
@@ -112,7 +123,7 @@ class SiteController extends Controller
             $cookies = Yii::$app->response->cookies;
             $cookies->remove('myquestbeforelogin');
             unset($cookies['myquestbeforelogin']);
-            \Yii::$app->getSession()->setFlash('modal', 'Pergnta cadastrada com sucesso');
+            \Yii::$app->getSession()->setFlash('modal', 'Pergunta cadastrada com sucesso');
             return 1;
         }
 
@@ -157,11 +168,11 @@ class SiteController extends Controller
     /**
      * Login ajax
      */
-    public function actionLoginAjax($url)
+    public function actionLoginAjax($url = null)
     {
-        if (!Yii::$app->user->isGuest) {
-            return $this->goHome();
-        }
+        // if (!Yii::$app->user->isGuest) {
+        //     return $this->goHome();
+        // }
 
         $model = new AlunoLoginForm();
         if ($model->load(Yii::$app->request->post()) && $model->login()) {

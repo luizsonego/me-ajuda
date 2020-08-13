@@ -1,6 +1,9 @@
 <?php
+
 namespace frontend\models;
 
+use app\models\AlunoProfile;
+use app\models\Auth;
 use common\models\Aluno;
 use Yii;
 use yii\base\Model;
@@ -49,22 +52,44 @@ class SignupForm extends Model
         if (!$this->validate()) {
             return null;
         }
-        
+
         $user = new Aluno();
         $user->username = $this->username;
         $user->email = $this->email;
-        if($this->password === '') {
-            $randonNumber = rand(100,999);
-            $user->setPassword($this->username.$randonNumber);
+        if ($this->password === '') {
+            $randonNumber = rand(100, 999);
+            $user->setPassword($this->username . $randonNumber);
             $user->status = 10;
             $nopass = true;
-            Yii::$app->session->setFlash('warning', 'Criamos uma senha padrão para você '. $this->username.$randonNumber);
-        }else{
+            Yii::$app->session->setFlash('warning', 'Criamos uma senha padrão para você ' . $this->username . $randonNumber);
+        } else {
             $user->setPassword($this->password);
         }
         $user->generateAuthKey();
         $user->generateEmailVerificationToken();
-        return $user->save() && $this->sendEmail($user, $nopass);
+        $user->registration_ip = \Yii::$app->request->userIP;
+        $transaction = Aluno::getDb()->beginTransaction();
+        if ($user->save()) {
+            $userIconDefault = rand(1, 18);
+            $profile = new AlunoProfile([
+                'aluno_id' => $user->id,
+                'public_email' => $user->email,
+                'gravatar_id' => 'user_' . str_pad($userIconDefault, 3, 0, STR_PAD_LEFT) . '.svg',
+                'name' => $user->username,
+                'location' => \Yii::$app->request->userIP,
+                'timezone' => \Yii::$app->timezone,
+            ]);
+            $auth = new Auth([
+                'user_id' => $user->id,
+                'source' => 'website',
+                'source_id' => (string)$user->id,
+              ]);
+            $transaction->commit();
+            $profile->save(0);
+            $auth->save(0);
+            return $this->sendEmail($user, $nopass);
+        }
+        // return $user->save() && $this->sendEmail($user, $nopass);
 
     }
 

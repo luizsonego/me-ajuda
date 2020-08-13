@@ -226,7 +226,7 @@ $this->title = $model->id;
 <?php if (Yii::$app->user->isGuest) { ?>
     <script>
         window.onload = function() {
-            var url = '8'
+            var url = <?php echo $model->id; ?>;
             $.ajax({
                 type: 'POST',
                 url: 'index.php?r=site/login-ajax&url=' + url,

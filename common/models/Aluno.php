@@ -1,6 +1,8 @@
 <?php
 namespace common\models;
 
+use app\models\AlunoProfile;
+use app\models\Auth;
 use Yii;
 use yii\base\NotSupportedException;
 use yii\behaviors\TimestampBehavior;
@@ -212,5 +214,15 @@ class Aluno extends ActiveRecord implements IdentityInterface
     public function removePasswordResetToken()
     {
         $this->password_reset_token = null;
+    }
+
+    public function getAuths()
+    {
+        return $this->hasMany(Auth::className(), ['user_id' => 'id']);
+    }
+
+    public function getAlunoprofile()
+    {
+        return $this->hasMany(AlunoProfile::className(), ['aluno_id' => 'id']);
     }
 }
