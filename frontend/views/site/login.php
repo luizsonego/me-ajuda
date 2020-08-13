@@ -52,7 +52,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 Precisa de um novo e-mail de verificação? <?= Html::a('Reenviar', ['site/resend-verification-email']) ?>
             </div>
             </div>
-            <div class="or">OU</div>
+            <!-- <div class="or">OU</div> -->
         </div>
         <div class="small-12 medium-6 column small-order-1 medium-order-2 login-box-social-section">
             <div class="login-box-social-section-inner">

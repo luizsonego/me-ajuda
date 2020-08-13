@@ -19,7 +19,7 @@ use yii\widgets\ActiveForm;
             <?= Html::submitButton('Login', ['class' => 'login-box-submit-button', 'name' => 'login-button']) ?>
             <?php ActiveForm::end(); ?>
           </div>
-          <div class="or">OU</div>
+          <!-- <div class="or">OU</div> -->
         </div>
         <div class="small-12 medium-6 column small-order-1 medium-order-2 login-box-social-section">
           <div class="login-box-social-section-inner">
