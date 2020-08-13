@@ -24,7 +24,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 <?= Html::submitButton('Cadastrar', ['class' => 'login-box-submit-button', 'name' => 'login-button']) ?>
                 <?php ActiveForm::end(); ?>
             </div>
-            <!-- <div class="or">OU</div> -->
+            <div class="or">OU</div>
         </div>
         <div class="small-12 medium-6 column small-order-1 medium-order-2 login-box-social-section">
             <div class="login-box-social-section-inner">
@@ -92,7 +92,7 @@ $this->params['breadcrumbs'][] = $this->title;
     .login-box-form-section,
     .login-box-social-section-inner {
         padding: 2.5rem;
-        min-height: 420px;
+        min-height: 500px;
     }
 
     .login-box-social-section {
@@ -277,6 +277,10 @@ $this->params['breadcrumbs'][] = $this->title;
         color: #fefefe;
         text-align: center;
         text-shadow: 2px 2px 3px #000;
+    }
+    
+    li {
+        list-style: none;
     }
 </style>
 
