@@ -45,6 +45,12 @@ $this->params['breadcrumbs'][] = $this->title;
                 <?= $form->field($model, 'rememberMe')->checkbox() ?>
                 <?= Html::submitButton('Login', ['class' => 'login-box-submit-button', 'name' => 'login-button']) ?>
                 <?php ActiveForm::end(); ?>
+
+                <div style="color:#999;margin:1em 0">
+                Se você esqueceu sua senha, pode <?= Html::a('redefini-la', ['site/request-password-reset']) ?>.
+                <br>
+                Precisa de um novo e-mail de verificação? <?= Html::a('Reenviar', ['site/resend-verification-email']) ?>
+            </div>
             </div>
             <div class="or">OU</div>
         </div>

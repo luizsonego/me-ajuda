@@ -4,7 +4,7 @@
 namespace frontend\models;
 
 use Yii;
-use common\models\User;
+use common\models\Aluno as User;
 use yii\base\Model;
 
 class ResendVerificationEmailForm extends Model
@@ -25,9 +25,9 @@ class ResendVerificationEmailForm extends Model
             ['email', 'required'],
             ['email', 'email'],
             ['email', 'exist',
-                'targetClass' => '\common\models\User',
+                'targetClass' => '\common\models\Aluno',
                 'filter' => ['status' => User::STATUS_INACTIVE],
-                'message' => 'There is no user with this email address.'
+                'message' => 'Não há nenhum usuário com este endereço de e-mail.'
             ],
         ];
     }
