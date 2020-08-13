@@ -1,9 +1,18 @@
 <?
+use app\models\AlunoProfile;
+use app\models\Auth;
 use yii\helpers\Url;
 ?>
 <div class="row">
     <div class="col-md-8 centered">
         <?php foreach ($model as $key => $my) : ?>
+            <?
+            $source = Auth::findOne(['user_id' => $my->user_id]);
+            $profile = AlunoProfile::findOne($my->user_id);
+            $profileImage = $source->source === 'facebook' 
+            ? 'http://graph.facebook.com/'.$profile->gravatar_id.'/picture?type=square' 
+            : 'frontend/web/assets/users_ico/'.$profile->gravatar_id;
+            ?>
             <div class="media border">
                 <div class="media-body">
 
@@ -17,7 +26,7 @@ use yii\helpers\Url;
                     <div class="action">
                         <div class="user">
                             <div class="ico_user">
-                                <img src="frontend/web/assets/users_ico/user-002.svg" alt="<?= $my->aluno->username ?>" title="<?= $my->aluno->username ?>">
+                                <img src="<?= $profileImage; ?>" alt="<?= $my->aluno->username ?>" title="<?= $my->aluno->username ?>">
                             </div>
                         </div>
                         <div class="acao">
@@ -78,6 +87,9 @@ use yii\helpers\Url;
         vertical-align: middle;
         top: 10px;
         position: relative;
+    }
+    .ico_user img {
+        border-radius: 50%;
     }
 
     .ver-mais {

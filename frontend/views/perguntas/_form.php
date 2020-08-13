@@ -1,5 +1,6 @@
 <?php
 
+use yii\bootstrap\Dropdown;
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 ?>
@@ -25,12 +26,14 @@ if ($cookies->has('myquestbeforelogin')){
         <?= $form->field($model, 'pergunta')->textarea(['rows' => 6, 'value' => $pergnta])->label(false) ?>
     </div>
     <div class="col-md-4">
+        
         <?
         echo $form->field($model, 'materia')->dropDownList(
             $materia,
             ['prompt'=>'Selecione uma matéria', 'options'=>[$materiaSelected=>["Selected"=>true]]]
         )->label(false);
         ?>
+
     </div>
     <div class="col-md-8">
         <div class="form-group pull-right">

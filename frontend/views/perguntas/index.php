@@ -1,5 +1,7 @@
 <?php
 
+use app\models\AlunoProfile;
+use app\models\Auth;
 use yii\widgets\Pjax;
 use yii\helpers\Url;
 use yii\helpers\Html;
@@ -16,6 +18,13 @@ $this->params['breadcrumbs'][] = $this->title;
         <div class="col-md-8 centered">
             <?php echo $this->render('_search', ['model' => $searchModel, 'materia' => $materia]); ?>
             <?php foreach ($dataProvider->getModels() as $key => $quest) : ?>
+                <?
+                $source = Auth::findOne(['user_id' => $quest->user_id]);
+                $profile = AlunoProfile::findOne($quest->user_id);
+                $profileImage = $source->source === 'facebook' 
+                ? 'http://graph.facebook.com/'.$profile->gravatar_id.'/picture?type=square' 
+                : 'frontend/web/assets/users_ico/'.$profile->gravatar_id;
+                ?>
                 <div class="media border">
                     <div class="media-body">
 
@@ -29,7 +38,7 @@ $this->params['breadcrumbs'][] = $this->title;
                         <div class="action">
                             <div class="user">
                                 <div class="ico_user">
-                                    <img src="frontend/web/assets/users_ico/user-001.svg" alt="<?= $quest->aluno->username ?>" title="<?= $quest->aluno->username ?>">
+                                    <img src="<?= $profileImage; ?>" alt="<?= $quest->aluno->username ?>" title="<?= $quest->aluno->username ?>">
                                 </div>
                             </div>
                             <div class="acao">
@@ -127,6 +136,9 @@ $this->params['breadcrumbs'][] = $this->title;
         vertical-align: middle;
         top: 10px;
         position: relative;
+    }
+    .ico_user img {
+        border-radius: 50%;
     }
 
     .ver-mais {

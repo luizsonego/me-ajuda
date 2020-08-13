@@ -1,11 +1,20 @@
 <?php
 
+use app\models\AlunoProfile;
+use app\models\Auth;
 use yii\helpers\Url;
 use yii\widgets\Pjax;
 ?>
 
 <?php Pjax::begin(); ?>
 <?php foreach ($model as $key => $quest) : ?>
+    <?
+    $source = Auth::findOne(['user_id' => $quest->user_id]);
+    $profile = AlunoProfile::findOne($quest->user_id);
+    $profileImage = $source->source === 'facebook' 
+    ? 'http://graph.facebook.com/'.$profile->gravatar_id.'/picture?type=square' 
+    : 'frontend/web/assets/users_ico/'.$profile->gravatar_id;
+    ?>
     <div class="media border">
         <div class="media-body">
 
@@ -19,7 +28,7 @@ use yii\widgets\Pjax;
             <div class="action">
                 <div class="user">
                     <div class="ico_user">
-                        <img src="frontend/web/assets/users_ico/user-002.svg" alt="">
+                        <img src="<?= $profileImage; ?>" alt="">
                     </div>
                 </div>
                 <div class="acao">
@@ -38,3 +47,9 @@ use yii\widgets\Pjax;
         <a href="<?= $urlAll ?>" class="btn btn-block btn-dark btn-outline-dark All">Ver Mais perguntas</a>
     </div>
 </div>
+
+<style>
+.ico_user img {
+        border-radius: 50%;
+    }
+</style>

@@ -5,6 +5,7 @@ use yii\widgets\ActiveForm;
 
 $request = Yii::$app->request;
 $id = $request->get('id', 1);
+$user_id = Yii::$app->user->identity->id;
 
 ?>
 <?php $form = ActiveForm::begin(['id' => $model->formName()]); ?>
@@ -20,6 +21,9 @@ $id = $request->get('id', 1);
     </div>
     <div class="hidden">
         <?= $form->field($model, 'perguntas_id')->textInput(['readonly' => true, 'value' => $id]) ?>
+    </div>
+    <div class="hidden">
+        <?= $form->field($model, 'user_id')->textInput(['readonly' => true, 'value' => $user_id]) ?>
     </div>
 </div>
 <?php ActiveForm::end(); ?>

@@ -1,7 +1,8 @@
 <?php
-
 use yii\helpers\Url;
+$this->title = 'Pagina inicial';
 ?>
+
 <div id="toast"></div>
 
 <div class="row">
@@ -110,6 +111,10 @@ use yii\helpers\Url;
         vertical-align: middle;
         top: 10px;
         position: relative;
+    }
+
+    .ico_user img {
+        border-radius: 50%;
     }
 
     .ver-mais {

@@ -73,7 +73,7 @@ FoundationAsset::register($this);
                 $source->source === 'facebook' 
                     ? 'http://graph.facebook.com/'.$profileImage.'/picture?type=square' 
                     : 'frontend/web/assets/users_ico/'.$profileImage,
-                ['width' => '30px', 'height' => '30px']
+                ['width' => '30px', 'height' => '30px', 'style' => 'border-radius: 50%']
             ) . '',
             'items' => [
                 [

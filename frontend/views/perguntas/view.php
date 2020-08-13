@@ -1,5 +1,7 @@
 <?php
 
+use app\models\AlunoProfile;
+use app\models\Auth;
 use common\models\AlunoLoginForm;
 use yii\helpers\Url;
 use yii\helpers\Html;
@@ -9,7 +11,13 @@ use yii\widgets\Pjax;
 $this->title = $model->id;
 \yii\web\YiiAsset::register($this);
 ?>
-
+<?
+$source = Auth::findOne(['user_id' => $model->user_id]);
+$profile = AlunoProfile::findOne($model->user_id);
+$profileImage = $source->source === 'facebook' 
+? 'http://graph.facebook.com/'.$profile->gravatar_id.'/picture?type=square' 
+: 'frontend/web/assets/users_ico/'.$profile->gravatar_id;
+?>
 <div class="row">
     <div class="col-md-8 centered">
         <div class="media border">
@@ -25,7 +33,7 @@ $this->title = $model->id;
                 <div class="action">
                     <div class="user">
                         <div class="ico_user" alt="<?= $model->aluno->username ?>" title="<?= $model->aluno->username ?>">
-                            <img src="frontend/web/assets/users_ico/user-005.svg" alt="">
+                            <img src="<?= $profileImage; ?>" alt="">
                         </div>
                     </div>
                 </div>
@@ -125,8 +133,16 @@ $this->title = $model->id;
                         ?>
                         </div>
                         <div class="user">
-                            <!-- <h4 class="media-heading"><?= $resposta->user_id ?></h4> -->
-                            <div class="ico_user"></div>
+                            <?
+                        $source = Auth::findOne(['user_id' => $resposta->user_id]);
+                        $profile = AlunoProfile::findOne($resposta->user_id);
+                        $profileImage = $source->source === 'facebook' 
+                        ? 'http://graph.facebook.com/'.$profile->gravatar_id.'/picture?type=square' 
+                        : 'frontend/web/assets/users_ico/'.$profile->gravatar_id;
+                        ?>
+                            <div class="ico_user">
+                                <img src="<?= $profileImage; ?>" alt="<?= $profile->name ?>" title="<?=  $profile->name ?>">
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -173,6 +189,11 @@ $this->title = $model->id;
         top: 10px;
         position: relative;
     }
+
+    .ico_user img {
+        border-radius: 50%;
+    }
+
 
     .best {
         width: 50px;
