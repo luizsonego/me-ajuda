@@ -14,10 +14,20 @@ return [
     'components' => [
         'assetManager' => [
             'class' => 'yii\web\AssetManager',
-            'forceCopy' => true,          
+            'forceCopy' => true,
+            'linkAssets' => true,
+            'appendTimestamp' => true,
         ],
-        'assetManager' => [
-            'linkAssets' => false,
+        'authClientCollection' => [
+            'class' => 'yii\authclient\Collection',
+            'clients' => [
+                'facebook' => [
+                    'class' => 'yii\authclient\clients\Facebook',
+                    'clientId' => '848126002385381',
+                    'clientSecret' => '2fc3525ed9e786000f3844af279dcf8f',
+                ],
+                // etc.
+            ],
         ],
         // 'view' => [
         //     'theme' => [

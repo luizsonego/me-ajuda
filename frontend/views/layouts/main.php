@@ -3,6 +3,9 @@
 /* @var $this \yii\web\View */
 /* @var $content string */
 
+use app\models\AlunoProfile;
+use app\models\Auth;
+use app\models\Profile;
 use yii\helpers\Html;
 use yii\bootstrap\Nav;
 use yii\bootstrap\NavBar;
@@ -30,7 +33,8 @@ FoundationAsset::register($this);
             margin: 0 auto !important;
             float: none !important;
         }
-        #user_img_menu a{
+
+        #user_img_menu a {
             padding: 10px;
         }
     </style>
@@ -42,55 +46,64 @@ FoundationAsset::register($this);
     <?php $this->beginBody() ?>
 
     <?php
-        NavBar::begin([
-            'brandLabel' => '<img alt="Brand" src="frontend/web/assets/logo.svg" width="30">',
-            'brandUrl' => Yii::$app->homeUrl,
-            'options' => [
-                'class' => 'navbar-default navbar-fixed-top',
-            ],
-        ]);
-        $menuItems = [
-            ['label' => 'Perguntas', 'url' => ['/perguntas']],
+    NavBar::begin([
+        'brandLabel' => '<img alt="Brand" src="frontend/web/assets/logo.svg" width="30">',
+        'brandUrl' => Yii::$app->homeUrl,
+        'options' => [
+            'class' => 'navbar-default navbar-fixed-top',
+        ],
+    ]);
+    $menuItems = [
+        ['label' => 'Perguntas', 'url' => ['/perguntas']],
+    ];
+    if (Yii::$app->user->isGuest) {
+        $menuItems[] = ['label' => 'Signup', 'url' => ['/site/signup']];
+        $menuItems[] = [
+            'label' => 'login',
+            'img' => 'frontend/web/assets/user_auth.svg',
+            'url' => ['/site/login']
         ];
-        if (Yii::$app->user->isGuest) {
-            $menuItems[] = ['label' => 'Signup', 'url' => ['/site/signup']];
-            $menuItems[] = [
-                'label' => 'login',
-                'img' => 'frontend/web/assets/user_auth.svg', 
-                'url' => ['/site/login']];
-        } else {
-            $menuItems[] = [
-                'label' => Html::img('frontend/web/assets/user_auth.svg', ['width' => '30px','height' => '30px']).'',
-                'items' => [
-                    [
-                         'label' => Yii::$app->user->identity->username, 
-                         'options' => ['style' =>'text-align: center;font-size: 1.5em;']
-                    ],
-                    '<li class="divider"></li>',
-                    ['label' => 'Minhas Perguntas', 'url' => ['/perguntas/myquestions']],
-                    '<li class="divider"></li>',
-                    [
-                        'label' => 
-                            Html::beginForm(['/site/logout'], 'post')
-                            . Html::submitButton(
-                                'Logout',
-                                ['class' => 'btn-link logout']
-                            )
-                            . Html::endForm(), 
-                        'url' => ['/site/logout'],
-                    ],
+    } else {
+        $source = Auth::findOne(['user_id' => Yii::$app->user->identity->id]);
+        $profile = AlunoProfile::findOne(Yii::$app->user->identity->id);
+        $profileImage = $profile->gravatar_id;
+        $menuItems[] = [
+            'label' =>
+            Html::img(
+                $source->source === 'facebook' 
+                    ? 'http://graph.facebook.com/'.$profileImage.'/picture?type=square' 
+                    : 'frontend/web/assets/users_ico/'.$profileImage,
+                ['width' => '30px', 'height' => '30px']
+            ) . '',
+            'items' => [
+                [
+                    'label' => Yii::$app->user->identity->username,
+                    'options' => ['style' => 'text-align: center;font-size: 1.5em;']
                 ],
-                'options' => ['id' =>'user_img_menu']
-            ];
-            
-        }
-        echo Nav::widget([
-            'options' => ['class' => 'navbar-nav navbar-right'],
-            'items' => $menuItems,
-            'encodeLabels' => false,
-        ]);
-        NavBar::end();
-        ?>
+                '<li class="divider"></li>',
+                ['label' => 'Minhas Perguntas', 'url' => ['/perguntas/myquestions']],
+                '<li class="divider"></li>',
+                [
+                    'label' =>
+                    Html::beginForm(['/site/logout'], 'post')
+                        . Html::submitButton(
+                            'Logout',
+                            ['class' => 'btn-link logout']
+                        )
+                        . Html::endForm(),
+                    // 'url' => ['/site/logout'],
+                ],
+            ],
+            'options' => ['id' => 'user_img_menu']
+        ];
+    }
+    echo Nav::widget([
+        'options' => ['class' => 'navbar-nav navbar-right'],
+        'items' => $menuItems,
+        'encodeLabels' => false,
+    ]);
+    NavBar::end();
+    ?>
 
     <div class="wrap">
         <div class="container">
@@ -99,7 +112,7 @@ FoundationAsset::register($this);
         </div>
     </div>
 
-    
+
     <footer class="marketing-site-footer">
         <div class="row medium-unstack">
             <div class="medium-4 columns">
