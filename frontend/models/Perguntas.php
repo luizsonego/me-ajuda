@@ -35,7 +35,7 @@ class Perguntas extends \yii\db\ActiveRecord
     {
         return [
             [['pergunta', 'materia'], 'required'],
-            [['pergunta'], 'string'],
+            [['pergunta', 'lista'], 'string'],
             [['created_at', 'updated_at'], 'safe'],
             [['user_id'], 'integer'],
             [['materia', 'instituicao'], 'string', 'max' => 255],
@@ -55,6 +55,7 @@ class Perguntas extends \yii\db\ActiveRecord
             'created_at' => 'Created At',
             'updated_at' => 'Updated At',
             'user_id' => 'User ID',
+            'lista' => 'Lista Pergntas',
         ];
     }
 
