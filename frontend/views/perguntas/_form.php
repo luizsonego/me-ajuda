@@ -1,8 +1,8 @@
 <?php
 
-use yii\bootstrap\Dropdown;
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
+use dosamigos\ckeditor\CKEditor;
 ?>
 <?php $form = ActiveForm::begin([
     'id' => "formQuestion",
@@ -10,23 +10,45 @@ use yii\widgets\ActiveForm;
         'class' => "formQuest",
     ]
 ]); ?>
-  
+
 <?php
 $pergnta = '';
 $materiaSelected = '';
 $cookies = Yii::$app->request->cookies;
-if ($cookies->has('myquestbeforelogin')){
-    $arrCookies = explode('/', $cookies->getValue('myquestbeforelogin'));
+if ($cookies->has('myquestbeforelogin')) {
+    $arrCookies = explode('~', $cookies->getValue('myquestbeforelogin'));
     $pergnta = $arrCookies[0];
     $materiaSelected = $arrCookies[1];
 }
 ?>
 <div class="row">
+<div class="col-md-4">
+        <?
+       echo $form->field($model, 'lista')->checkbox(['uncheck' => 'Disabled', 'value' => 'Active']);
+        ?>
+
+    </div>
     <div class="col-md-12">
-        <?= $form->field($model, 'pergunta')->textarea(['rows' => 6, 'value' => $pergnta])->label(false) ?>
+        <?= $form->field($model, 'pergunta')->label(false)->widget(CKEditor::className(), [
+            'preset' => 'custom',
+            'clientOptions' => [
+                'toolbar' => [
+                    [
+                        'name' => 'row1',
+                        'items' => [
+                            'Bold', 'Italic', 'Underline', '-',
+                            'TextColor', 'BGColor', '-',
+                            'NumberedList', 'BulletedList', '-',
+                            'JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock', 'list', 'indent', 'blocks', 'align', 'bidi', '-',
+                        ],
+                    ],
+                    
+                ],
+            ],
+            'options' => ['rows' => 6, 'value' => $pergnta],
+        ]) ?>
     </div>
     <div class="col-md-4">
-        
         <?
         echo $form->field($model, 'materia')->dropDownList(
             $materia,
@@ -43,6 +65,7 @@ if ($cookies->has('myquestbeforelogin')){
     </div>
 </div>
 <?php ActiveForm::end(); ?>
+<!-- campo pergntar -->
 
 <button class="_newQuest btn btn-success" id="newFormQuestion" style="display: none;">Criar nova pergunta</button>
 
@@ -59,17 +82,17 @@ if ($cookies->has('myquestbeforelogin')){
     </div>
 </div>
 <div class="modal fade" id="modalCadastrado" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-body">
-                    <h4>Pergunta cadastrada com sucesso</h4>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Ok</button>
-                </div>
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-body">
+                <h4>Pergunta cadastrada com sucesso</h4>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Ok</button>
             </div>
         </div>
     </div>
+</div>
 <?php
 $js = <<<JS
 // get the form id and set the event

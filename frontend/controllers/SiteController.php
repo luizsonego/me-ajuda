@@ -106,14 +106,16 @@ class SiteController extends Controller
 
         if ($formCreateQuestions->load(Yii::$app->request->post())) {
             // \Yii::$app->getSession()->setFlash('success', 'Pergunta cadastrada com sucesso!!!');
+
             if (Yii::$app->user->isGuest) {
                 $data = Yii::$app->request->post();
                 $pergunta = $data['Perguntas']['pergunta'];
                 $materia = $data['Perguntas']['materia'];
+                $isList = $data['Perguntas']['lista'];
                 $cookies = Yii::$app->response->cookies;
                 $cookies->add(new Cookie([
                     'name' => 'myquestbeforelogin',
-                    'value' => $pergunta . '/' . $materia,
+                    'value' => $pergunta . '~' . $materia,
                 ]));
                 \Yii::$app->getSession()->setFlash('modal', 'Por favor faça login para criar uma pergunta');
                 $this->redirect(['site/login']);

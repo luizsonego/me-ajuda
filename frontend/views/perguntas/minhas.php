@@ -5,6 +5,11 @@ use yii\helpers\Url;
 ?>
 <div class="row">
     <div class="col-md-8 centered">
+        <?
+        if (empty($model)){
+            echo '<h1>Você não fez perguntas ainda :/ </h1>';
+        }
+        ?>
         <?php foreach ($model as $key => $my) : ?>
             <?
             $source = Auth::findOne(['user_id' => $my->user_id]);
@@ -41,6 +46,11 @@ use yii\helpers\Url;
 </div>
 
 <style>
+    h1 {
+        color: #555;
+        font-size: 30px;
+        text-align: center;
+    }
     .question {
         border: 1px solid #ccc;
         padding: 10px;
