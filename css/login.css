@@ -1,0 +1,87 @@
+.box {
+  padding-left: 15px!important;
+  padding-right: 20px!important;
+}
+
+label {
+  font-size: 1em!important;
+}
+
+.input {
+  border-radius: 10px!important;
+  border: 1px solid var(--color-primary)!important;
+}
+
+.input:active,
+.input:focus {
+  box-shadow: 0px 0 5px var(--color-primary)!important;
+  border: 1px solid var(--color-primary)!important;
+}
+
+li {
+  list-style: none;
+}
+
+[type=color],
+[type=date],
+[type=datetime-local],
+[type=datetime],
+[type=email],
+[type=month],
+[type=number],
+[type=password],
+[type=search],
+[type=tel],
+[type=text],
+[type=time],
+[type=url],
+[type=week],
+textarea {
+  height: 3em !important;
+  font-size: 1.1em!important;
+  padding-left: 20px!important;
+}
+
+
+.login-box-social-button-facebook {
+  display: inline-block;
+  vertical-align: middle;
+  margin: 0 0 1em 0;
+  padding: 0.85em 1em;
+  -webkit-appearance: none;
+  border: 1px solid transparent;
+  border-radius: 0;
+  transition: background-color 0.25s ease-out, color 0.25s ease-out;
+  font-size: 0.9em;
+  line-height: 1;
+  text-align: center;
+  cursor: pointer;
+  background-color: #3b5998;
+  color: #fefefe;
+  display: block;
+  width: 100%;
+  margin-right: 0;
+  margin-left: 0;
+  font-weight: 500;
+  margin-bottom: 1.25em;
+  text-transform: uppercase;
+}
+
+[data-whatinput='mouse'] .login-box-social-button-facebook {
+  outline: 0;
+}
+
+.login-box-social-button-facebook:hover,
+.login-box-social-button-facebook:focus {
+  background-color: #2f477a;
+  color: #fefefe;
+}
+
+
+.tabs {
+  background: transparent!important;
+  border: none!important;
+}
+.tabs-title>a {
+  font-size: 1em!important;
+}

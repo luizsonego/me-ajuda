@@ -16,9 +16,19 @@ class FoundationAsset extends AssetBundle
     ];
 
     public $js = [
+        'dist\js\plugins\foundation.core.js',
         'dist\js\foundation.min.js',
+        'dist\js\plugins\foundation.offcanvas.js',
+        'dist\js\plugins\foundation.util.keyboard.js',
+        'dist\js\plugins\foundation.util.mediaQuery.js',
+        'dist\js\plugins\foundation.util.triggers.js',
+        'dist\js\plugins\foundation.util.motion.js',
+        'dist\js\plugins\foundation.util.touch.js',
     ];
 
-    public $depends = [
+    public $depends = [];
+
+    public $publishOptions = [
+        'forceCopy' => true,
     ];
 }

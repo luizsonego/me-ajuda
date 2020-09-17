@@ -1,0 +1,72 @@
+:root {
+  --color-background: #EFEFEF;
+
+  --color-primary: #01D3C7;
+  --color-primary-darker: #00948D;
+  --color-primary-lighter: #00E0D5;
+
+  --color-secundary: #7E7E7E;
+  --color-secundary-darker: #3D3D3D;
+  --color-secundary-lighter: #8A8A8A;
+  
+  --color-navbar: #ffffff;
+  --color-white: #ffffff;
+
+  --color-text-white: #ffffff;
+  --color-text-primary: #01D3C7;
+  --color-text-secundary: #7E7E7E;
+  --color-text-secundary-dark: #3F3F3F;
+
+  --shadow: rgba(99, 99, 99, 0.25);
+
+  --color-alert-default: rgba(51, 51, 51, 0.89);
+  --color-alert-success: rgba(67, 160, 71, 0.89);
+  --color-alert-info: rgba(30, 136, 229, 0.89);
+  --color-alert-danger: rgba(229, 57, 53, 0.89);
+  --color-alert-warning: rgba(253, 216, 53, 0.89);
+
+  font-size: 60%!important;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body, #root {
+  height: 100vh;
+}
+
+body {
+  background: var(--color-background);
+}
+
+/* body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+} */
+
+body, 
+input, 
+button, 
+textarea {
+  font: 500 1.6rem Roboto;
+  color: var(--color-text-base);
+}
+
+textarea {
+  border: 1px solid var(--color-primary)!important;
+}
+
+.container {
+  width: 90vw;
+  max-width: 700px;
+}
+
+@media (min-width: 700px) {
+  :root {
+    font-size: 62,5%;
+  }
+}

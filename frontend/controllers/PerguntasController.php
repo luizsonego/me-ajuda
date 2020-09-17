@@ -11,10 +11,8 @@ use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use yii\data\Pagination;
 use app\models\Materias;
-use Symfony\Component\BrowserKit\Cookie;
-use yii\web\Cookie as WebCookie;
-use yii\web\Session;
 
+use yii\web\Cookie;
 /**
  * PerguntasController implements the CRUD actions for Perguntas model.
  */
@@ -115,7 +113,30 @@ class PerguntasController extends Controller
         $model = new Perguntas();
         $materia = Materias::getDataList();
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+        if ($model->load(Yii::$app->request->post())) {
+
+            if (Yii::$app->user->isGuest) {
+                $data = Yii::$app->request->post();
+                $pergunta = $data['Perguntas']['pergunta'];
+                $materia = $data['Perguntas']['materia'];
+                $isList = $data['Perguntas']['lista'];
+                $cookies = Yii::$app->response->cookies;
+                $cookies->add(new Cookie([
+                    'name' => 'myquestbeforelogin',
+                    'value' => $pergunta . '~' . $materia,
+                ]));
+                // \Yii::$app->getSession()->setFlash('modal', 'Por favor faça login para criar uma pergunta');
+                Yii::$app->session->setFlash('success', "Por favor faça login para criar uma pergunta."); 
+                $this->redirect(['site/login']);
+                return 2;
+            }
+            $model->save();
+            $cookies = Yii::$app->response->cookies;
+            $cookies->remove('myquestbeforelogin');
+            unset($cookies['myquestbeforelogin']);
+            // \Yii::$app->getSession()->setFlash('info', 'Pergunta cadastrada com sucesso');
+            return 1;
+
             return $this->redirect(['view', 'id' => $model->id]);
         }
 

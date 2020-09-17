@@ -9,12 +9,12 @@
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    width="250"
-   height="200"
-   viewBox="0 0 66.145832 52.916695"
+   height="280"
+   viewBox="0 0 66.145832 74.083335"
    version="1.1"
    id="svg8"
    inkscape:version="1.0.1 (3bc2e813f5, 2020-09-07)"
-   sodipodi:docname="logo.svg"
+   sodipodi:docname="logo-completa.svg"
    inkscape:export-filename="/home/luiz/Documentos/logo_faculdade_de_pressao.png"
    inkscape:export-xdpi="96"
    inkscape:export-ydpi="96">
@@ -141,7 +141,7 @@
            id="tspan863"
            x="99.072037"
            y="99.065819"
-           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Azonix;-inkscape-font-specification:Azonix;fill:#01d3c7;fill-opacity:1;stroke-width:0.252925">FACULDADE</tspan></text>
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Azonix;-inkscape-font-specification:Azonix;fill:#01d3c7;stroke-width:0.252925;fill-opacity:1">FACULDADE</tspan></text>
       <text
          xml:space="preserve"
          style="font-style:normal;font-weight:normal;font-size:9.22341px;line-height:1.25;font-family:sans-serif;fill:#01d3c7;fill-opacity:1;stroke:none;stroke-width:0.230585"
@@ -153,7 +153,7 @@
            id="tspan867"
            x="99.289101"
            y="107.33912"
-           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Azonix;-inkscape-font-specification:Azonix;fill:#01d3c7;fill-opacity:1;stroke-width:0.230585">de pressao</tspan></text>
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Azonix;-inkscape-font-specification:Azonix;fill:#01d3c7;stroke-width:0.230585;fill-opacity:1">de pressao</tspan></text>
     </g>
   </g>
 </svg>

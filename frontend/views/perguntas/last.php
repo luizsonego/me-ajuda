@@ -2,6 +2,7 @@
 
 use app\models\AlunoProfile;
 use app\models\Auth;
+use app\models\Respostas;
 use yii\helpers\Url;
 use yii\widgets\Pjax;
 ?>
@@ -9,47 +10,47 @@ use yii\widgets\Pjax;
 <?php Pjax::begin(); ?>
 <?php foreach ($model as $key => $quest) : ?>
     <?
+    // echo '<pre>';
+    // print_r($model);
+    // echo '</pre>';
+    // die;
     $source = Auth::findOne(['user_id' => $quest->user_id]);
     $profile = AlunoProfile::findOne($quest->user_id);
     $profileImage = $source->source === 'facebook' 
     ? 'http://graph.facebook.com/'.$profile->gravatar_id.'/picture?type=square' 
     : 'frontend/web/assets/users_ico/'.$profile->gravatar_id;
     ?>
-    <div class="media border">
-        <div class="media-body">
 
-            <div class="question">
-                <div class="list-group-item-text"><?= nl2br($quest->pergunta) ?></div>
+    <div class="box" id="quest">
+        <div class="content">
+            <?= $quest->pergunta ?>
+        </div>
+        <div class="footer">
+            <div class="materia">
+                <span class="materia">
+                    <?= $quest->onematerias->materia ?> <br>
+                </span>
+                <span class="data">
+                    <?= date('d F \d\e Y', strtotime($quest->created_at)) ?>
+                </span>
             </div>
-            <div class="dados">
-                <div class="dado"><?= $quest->onematerias->materia ?></div>
-                <div class="dado"><?= date('d F \d\e Y', strtotime($quest->created_at)) ?></div>
+            <div class="respostas">
+                <img src="frontend/web/assets/icon_comment.svg" alt="icone respostas"> <?= Respostas::sumAnswers($quest->id) ?> respostas
             </div>
-            <div class="action">
-                <div class="user">
-                    <div class="ico_user">
-                        <img src="<?= $profileImage; ?>" alt="">
-                    </div>
-                </div>
-                <div class="acao">
-                    <?php $url = Url::to(['perguntas/view', 'id' => $quest->id]); ?>
-                    <a href="<?= $url ?>" class="btn btn-block btn-dark btn-outline-dark last">Responder</a>
-                </div>
+            <div class="actions">
+                <?php $url = Url::to(['perguntas/view', 'id' => $quest->id]); ?>
+                <button class="button-answer" onclick="location.href='<?= $url ?>'">Responder</button>
+                <img src="<?= $profileImage; ?>" alt="<?= $profile->name ?>" title="<?= $profile->name ?>" class="img-profile">
             </div>
         </div>
     </div>
+
 <?php endforeach; ?>
 <?php Pjax::end(); ?>
 <br>
 <?php $urlAll = Url::to(['/perguntas']); ?>
 <div class="row">
-    <div class="col-md-4 centered">
-        <a href="<?= $urlAll ?>" class="btn btn-block btn-dark btn-outline-dark All">Ver Mais perguntas</a>
+    <div class="col-md-4  large-centered   columns small-6 small-centered">
+        <button onclick="location.href='<?= $urlAll ?>'" class="button-default">Ver todas</button>
     </div>
 </div>
-
-<style>
-.ico_user img {
-        border-radius: 50%;
-    }
-</style>

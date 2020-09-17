@@ -1,4 +1,4 @@
-<div class="perguntas-create border" id="questions">
+<div class="perguntas-create" id="questions">
 
     <?= $this->render('_form', [
         'model' => $model,
