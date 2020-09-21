@@ -160,7 +160,7 @@ if (Yii::$app->user->isGuest) {
         $.ajax({
             type: 'POST',
             url: 'index.php?r=site/login-ajax&url=' + $model->id,
-            success: function (data) {
+            success: function successLogin(data) {
                 $('#login-modal').html(data);
                 $('#login-modal').foundation('open');
             };
