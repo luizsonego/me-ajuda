@@ -151,7 +151,7 @@ $profileImage = $source->source === 'facebook'
 
 <?php if (Yii::$app->user->isGuest) {
 
-    $script = <<< JS
+    $script = <<< SCRIPT
 
         $(document).ready(function() { 
             var url = $model->id
@@ -165,8 +165,7 @@ $profileImage = $source->source === 'facebook'
             });
         });
     
-    JS;
-
+    SCRIPT;
     $this->registerJs($script);
 
 }
