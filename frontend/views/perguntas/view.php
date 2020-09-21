@@ -153,7 +153,7 @@ $profileImage = $source->source === 'facebook'
 ?>
 <script>
         $(document).ready(function() { 
-            var url = $model->id
+            var url = <?= $model->id ?>
             $.ajax({
                 type: 'POST',
                 url: 'index.php?r=site/login-ajax&url=' + url,
