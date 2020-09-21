@@ -231,6 +231,11 @@ class SiteController extends Controller
         return $this->render('about');
     }
 
+    public function actionPrivacyPolicy()
+    {
+        return $this->render('privacyPolicy');
+    }
+
     /**
      * Signs user up.
      *
