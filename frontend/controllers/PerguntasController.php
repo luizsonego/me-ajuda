@@ -91,7 +91,7 @@ class PerguntasController extends Controller
             'resposta' => $resposta,
             'model' => $this->findModel($id),
             'answer' => $createAnswer,
-            'hasBatter' => $hasBatter,
+            'hasBatter' => $hasBatter
         ]);
     }
 
