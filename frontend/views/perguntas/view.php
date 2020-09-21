@@ -25,19 +25,19 @@ $profileImage = $source->source === 'facebook'
 
     <div class="box">
         <div class="content">
-            <?php echo $model->pergunta ?>
+            <?php echo $model->pergunta; ?>
         </div>
         <div class="footer">
             <div class="materia">
                 <span class="materia">
-                    <?php echo $model->onematerias->materia ?> <br>
+                    <?php echo $model->onematerias->materia; ?> <br>
                 </span>
                 <span class="data">
-                    <?php echo date('d F \d\e Y', strtotime($model->created_at)) ?>
+                    <?php echo date('d F \d\e Y', strtotime($model->created_at)); ?>
                 </span>
             </div>
             <div class="actions">
-                <img src="<?php echo $profileImage; ?>" alt="<?php echo $profile->name ?>" title="<?php echo $profile->name ?>" class="img-profile">
+                <img src="<?php echo $profileImage; ?>" alt="<?php echo $profile->name; ?>" title="<?php echo $profile->name; ?>" class="img-profile">
             </div>
         </div>
     </div>
@@ -48,10 +48,7 @@ $profileImage = $source->source === 'facebook'
         echo $this->render('/respostas/create', array('model' => $answer));
     }
     ?>
-
     <hr>
-
-
     <?php Pjax::begin(['id' => 'answer']); ?>
     <?php foreach ($resposta as $resposta): ?>
 
@@ -139,7 +136,7 @@ $profileImage = $source->source === 'facebook'
                         ? 'http://graph.facebook.com/'.$profile->gravatar_id.'/picture?type=square' 
                         : 'frontend/web/assets/users_ico/'.$profile->gravatar_id;
                         ?>
-                    <img src="<?= $profileImage; ?>" alt="<?= $profile->name ?>" title="<?= $profile->name ?>" class="img-profile">
+                    <img src="<?php echo  $profileImage; ?>" alt="<?php echo $profile->name; ?>" title="<?php echo $profile->name; ?>" class="img-profile">
                 </div>
             </div>
         </div>
