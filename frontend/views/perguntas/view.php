@@ -152,7 +152,7 @@ $profileImage = $source->source === 'facebook'
     <h4>Pergunta cadastrada com sucesso</h4>
 </div>
 
-<?php if (Yii::$app->user->isGuest) {
+<?php 
     $js = <<<JS
     $(document).ready(function() { 
         var url = $model->id
@@ -167,4 +167,3 @@ $profileImage = $source->source === 'facebook'
      });
     JS;
     $this->registerJs($js);
-}
