@@ -13,7 +13,7 @@ $this->title = $model->id;
 \yii\web\YiiAsset::register($this);
 
 ?>
-<?
+<?php
 $source = Auth::findOne(['user_id' => $model->user_id]);
 $profile = AlunoProfile::findOne($model->user_id);
 $profileImage = $source->source === 'facebook' 
@@ -152,22 +152,20 @@ $profileImage = $source->source === 'facebook'
     <h4>Pergunta cadastrada com sucesso</h4>
 </div>
 
-<?php if (Yii::$app->user->isGuest) { ?>
-    <?php
+<?php if (Yii::$app->user->isGuest) {
     $js = <<<JS
     $(document).ready(function() { 
-        var url = $model->id
-        console.log(url)
+        var url = $model->id;
         $.ajax({
             type: 'POST',
             url: 'index.php?r=site/login-ajax&url=' + url,
             success: function (data) {
-                $('#login-modal').html(data)
+                $('#login-modal').html(data);
                 $('#login-modal').foundation('open');
-            }
-        })
+            };
+        });
      });
     JS;
     $this->registerJs($js, View::POS_END);
-    ?>
-<?php } ?>
+}
+?>
