@@ -153,7 +153,7 @@ $profileImage = $source->source === 'facebook'
     $js = <<< JS
     $('.list-link').click(function(){
         $.ajax({
-            url: '?r=public/getlist&amp;param1=$one&amp;param2=$two&amp;param3=$three',
+            url: 'index.php?r=site/login-ajax&url=',
             dataType: "json",
             success: function(data) {
                 $(".well").html(data.id);                
