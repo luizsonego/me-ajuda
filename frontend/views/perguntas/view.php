@@ -150,8 +150,21 @@ $profileImage = $source->source === 'facebook'
 </div>
 
 <?php if (Yii::$app->user->isGuest) {
+    $js = <<< JS
+    $('.list-link').click(function(){
+        $.ajax({
+            url: '?r=public/getlist&amp;param1=$one&amp;param2=$two&amp;param3=$three',
+            dataType: "json",
+            success: function(data) {
+                $(".well").html(data.id);                
+            }
+        })
+    });
+JS;
+$this->registerJs($js);
 ?>
-<script>
+
+<!-- <script>
         $(document).ready(function() { 
             var url = <?= $model->id ?>
             $.ajax({
@@ -163,5 +176,5 @@ $profileImage = $source->source === 'facebook'
                 }
             });
         });
-    </script>
+    </script> -->
 <?php } ?>
