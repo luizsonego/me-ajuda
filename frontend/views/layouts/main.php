@@ -174,7 +174,7 @@ FoundationAsset::register($this);
                 </ul>
             </div>
 
-            <div class="col-md-3"></div>
+            <!-- <div class="col-md-3"></div>
             <div class="col-md-9">
                 <div class="social">
                     <div class="col-md-3">Redes sociais</div>
@@ -188,17 +188,17 @@ FoundationAsset::register($this);
                         <img class="logo" src="frontend/web/assets/instagram_icon.svg" width="60px" />
                     </div>
                     <div class="col-md-2">
-                        <img class="logo" src="frontend/web/assets/twitter_icon.svg" width="60px/>
+                        <img class="logo" src="frontend/web/assets/twitter_icon.svg" width="60px" />
                     </div>
                 </div>
-            </div>
+            </div> -->
 
-            <div class="col-md-3"></div>
+            <!-- <div class="col-md-3"></div>
             <div class="col-md-9">
                 <div class="copy">
                     ©
                 </div>
-            </div>
+            </div> -->
 
         </div>
 
