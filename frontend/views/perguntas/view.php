@@ -153,7 +153,17 @@ $profileImage = $source->source === 'facebook'
 
     $script = <<< JS
 
-
+        $(document).ready(function() { 
+            var url = $model->id
+            $.ajax({
+                type: 'POST',
+                url: 'index.php?r=site/login-ajax&url=' + url,
+                success: function(data) {
+                    $('#login-modal').html(data)
+                    $('#login-modal').foundation('open')
+                }
+            });
+        });
     
     JS;
 
