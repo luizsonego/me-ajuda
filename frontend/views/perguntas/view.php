@@ -25,19 +25,19 @@ $profileImage = $source->source === 'facebook'
 
     <div class="box">
         <div class="content">
-            <?php echo  $model->pergunta ?>
+            <?= $model->pergunta ?>
         </div>
         <div class="footer">
             <div class="materia">
                 <span class="materia">
-                    <?php echo $model->onematerias->materia ?> <br>
+                    <?= $model->onematerias->materia ?> <br>
                 </span>
                 <span class="data">
-                    <?php echo date('d F \d\e Y', strtotime($model->created_at)) ?>
+                    <?= date('d F \d\e Y', strtotime($model->created_at)) ?>
                 </span>
             </div>
             <div class="actions">
-                <img src="<?php echo $profileImage; ?>" alt="<?php echo $profile->name ?>" title="<?php echo $profile->name ?>" class="img-profile">
+                <img src="<?= $profileImage; ?>" alt="<?= $profile->name ?>" title="<?= $profile->name ?>" class="img-profile">
             </div>
         </div>
     </div>
@@ -57,12 +57,12 @@ $profileImage = $source->source === 'facebook'
 
         <div class="box">
             <div class="content">
-                <?php echo nl2br($resposta->resposta) ?>
+                <?= nl2br($resposta->resposta) ?>
             </div>
             <div class="footer answer">
                 <div class="likes">
                     <div class="button-action">
-                        <?php echo
+                        <?=
                             Html::button(
                                 '<div class="text-count">' . $resposta->is_likeable . '</div>',
                                 [
@@ -81,7 +81,7 @@ $profileImage = $source->source === 'facebook'
                             );
                         ?>
                     </div>
-                    <?php
+                    <?
                         if ($resposta->is_best === 1) {
                             echo '<div class="button-action">';
                             echo '  <div class="is-best"><img src="frontend/web/assets/best.svg" /></div>';
@@ -89,7 +89,7 @@ $profileImage = $source->source === 'facebook'
                         }
                     ?>
                     <div class="button-action">
-                        <?php
+                        <?
                             if(!Yii::$app->user->isGuest && $model->user_id === Yii::$app->user->identity->id && $hasBatter != 1){
                                 echo Html::button(
                                     '<div class="text-count">Melhor resposta</div>',
@@ -132,14 +132,14 @@ $profileImage = $source->source === 'facebook'
                     </div>
                 </div>
                 <div class="actions">
-                    <?php
+                    <?
                         $source = Auth::findOne(['user_id' => $resposta->user_id]);
                         $profile = AlunoProfile::findOne($resposta->user_id);
                         $profileImage = $source->source === 'facebook' 
                         ? 'http://graph.facebook.com/'.$profile->gravatar_id.'/picture?type=square' 
                         : 'frontend/web/assets/users_ico/'.$profile->gravatar_id;
                         ?>
-                    <img src="<?php echo $profileImage; ?>" alt="<?php echo $profile->name ?>" title="<?php echo $profile->name ?>" class="img-profile">
+                    <img src="<?= $profileImage; ?>" alt="<?= $profile->name ?>" title="<?= $profile->name ?>" class="img-profile">
                 </div>
             </div>
         </div>
@@ -152,21 +152,19 @@ $profileImage = $source->source === 'facebook'
     <h4>Pergunta cadastrada com sucesso</h4>
 </div>
 
-<?php 
-if (Yii::$app->user->isGuest) {
-
+<?php if (Yii::$app->user->isGuest) {
     $js = <<<JS
     $(document).ready(function() { 
+        var url = $model->id
         $.ajax({
             type: 'POST',
-            url: 'index.php?r=site/login-ajax&url=' + $model->id,
-            success: function successLogin(data) {
-                $('#login-modal').html(data);
-                $('#login-modal').foundation('open');
-            };
+            url: 'index.php?r=site/login-ajax&url=' + url,
+            success: function (data) {
+                $('#login-modal').html(data)
+                $('#login-modal').foundation('open')
+            }
         });
      });
-
     JS;
     $this->registerJs($js, View::POS_END);
 }
