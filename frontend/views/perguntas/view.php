@@ -164,6 +164,4 @@ $profileImage = $source->source === 'facebook'
             });
         });
     </script>
-<?
-}
-?>
+<?php } ?>
