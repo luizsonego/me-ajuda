@@ -151,15 +151,17 @@ $profileImage = $source->source === 'facebook'
 
 <?php if (Yii::$app->user->isGuest) {
     $js = <<< JS
-    $('.list-link').click(function(){
-        $.ajax({
-            url: 'index.php?r=site/login-ajax&url=',
-            dataType: "json",
-            success: function(data) {
-                $(".well").html(data.id);                
-            }
-        })
-    });
+    $(document).ready(function() { 
+            var url = 16
+            $.ajax({
+                type: 'POST',
+                url: 'index.php?r=site/login-ajax&url=' + url,
+                success: function(data) {
+                    $('#login-modal').html(data)
+                    $('#login-modal').foundation('open')
+                }
+            });
+        });
 JS;
 $this->registerJs($js);
 ?>
