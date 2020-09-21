@@ -149,7 +149,7 @@ $profileImage = $source->source === 'facebook'
     <h4>Pergunta cadastrada com sucesso</h4>
 </div>
 
-<?php if (Yii::$app->user->isGuest):
+<?php if (Yii::$app->user->isGuest){
     $js = <<<JS
 
     $(document).ready(function() { 
@@ -168,4 +168,4 @@ $profileImage = $source->source === 'facebook'
 
     $this->registerJs($js);
 
-endif;
+}
