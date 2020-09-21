@@ -152,7 +152,7 @@ $profileImage = $source->source === 'facebook'
 <?php if (Yii::$app->user->isGuest) {
     $js = <<< JS
     $(document).ready(function() { 
-            var url = 16
+            var url = $model->id
             $.ajax({
                 type: 'POST',
                 url: 'index.php?r=site/login-ajax&url=' + url,
