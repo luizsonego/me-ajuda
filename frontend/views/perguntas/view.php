@@ -166,5 +166,5 @@ $profileImage = $source->source === 'facebook'
         });
      });
     JS;
-    $this->registerJs($js, View::POS_END);
+    $this->registerJs($js);
 }
