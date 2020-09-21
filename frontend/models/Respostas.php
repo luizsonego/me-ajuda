@@ -89,4 +89,13 @@ class Respostas extends \yii\db\ActiveRecord
 
         return $models;
     }
+
+    public static function sumAnswers($id)
+    {
+        $model = Respostas::find()
+            ->where(['perguntas_id' => $id])
+            ->count();
+
+        return $model;
+    }
 }

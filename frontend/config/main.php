@@ -14,9 +14,9 @@ return [
     'components' => [
         'assetManager' => [
             'class' => 'yii\web\AssetManager',
-            'forceCopy' => false,
-            'linkAssets' => false,
-            'appendTimestamp' => false,
+            'forceCopy' => true,
+            'linkAssets' => true,
+            'appendTimestamp' => true,
         ],
         'authClientCollection' => [
             'class' => 'yii\authclient\Collection',
@@ -62,7 +62,7 @@ return [
         'errorHandler' => [
             'errorAction' => 'site/error',
         ],
-        
+
         /*
         'urlManager' => [
             'enablePrettyUrl' => true,
