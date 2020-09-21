@@ -25,19 +25,19 @@ $profileImage = $source->source === 'facebook'
 
     <div class="box">
         <div class="content">
-            <?= $model->pergunta ?>
+            <?php echo $model->pergunta ?>
         </div>
         <div class="footer">
             <div class="materia">
                 <span class="materia">
-                    <?= $model->onematerias->materia ?> <br>
+                    <?php echo $model->onematerias->materia ?> <br>
                 </span>
                 <span class="data">
-                    <?= date('d F \d\e Y', strtotime($model->created_at)) ?>
+                    <?php echo date('d F \d\e Y', strtotime($model->created_at)) ?>
                 </span>
             </div>
             <div class="actions">
-                <img src="<?= $profileImage; ?>" alt="<?= $profile->name ?>" title="<?= $profile->name ?>" class="img-profile">
+                <img src="<?php echo $profileImage; ?>" alt="<?php echo $profile->name ?>" title="<?php echo $profile->name ?>" class="img-profile">
             </div>
         </div>
     </div>
@@ -53,16 +53,16 @@ $profileImage = $source->source === 'facebook'
 
 
     <?php Pjax::begin(['id' => 'answer']); ?>
-    <?php foreach ($resposta as $resposta) : ?>
+    <?php foreach ($resposta as $resposta): ?>
 
         <div class="box">
             <div class="content">
-                <?= nl2br($resposta->resposta) ?>
+                <?php echo nl2br($resposta->resposta); ?>
             </div>
             <div class="footer answer">
                 <div class="likes">
                     <div class="button-action">
-                        <?=
+                        <?php echo
                             Html::button(
                                 '<div class="text-count">' . $resposta->is_likeable . '</div>',
                                 [
@@ -81,7 +81,7 @@ $profileImage = $source->source === 'facebook'
                             );
                         ?>
                     </div>
-                    <?
+                    <?php
                         if ($resposta->is_best === 1) {
                             echo '<div class="button-action">';
                             echo '  <div class="is-best"><img src="frontend/web/assets/best.svg" /></div>';
@@ -89,8 +89,8 @@ $profileImage = $source->source === 'facebook'
                         }
                     ?>
                     <div class="button-action">
-                        <?
-                            if(!Yii::$app->user->isGuest && $model->user_id === Yii::$app->user->identity->id && $hasBatter != 1){
+                        <?php
+                            if(!Yii::$app->user->isGuest && $model->user_id === Yii::$app->user->identity->id && $hasBatter != 1) {
                                 echo Html::button(
                                     '<div class="text-count">Melhor resposta</div>',
                                     [
@@ -132,7 +132,7 @@ $profileImage = $source->source === 'facebook'
                     </div>
                 </div>
                 <div class="actions">
-                    <?
+                    <?php
                         $source = Auth::findOne(['user_id' => $resposta->user_id]);
                         $profile = AlunoProfile::findOne($resposta->user_id);
                         $profileImage = $source->source === 'facebook' 
@@ -154,7 +154,7 @@ $profileImage = $source->source === 'facebook'
 
 <?php if (Yii::$app->user->isGuest) {
     $js = <<<JS
-    
+
     $(document).ready(function() { 
         var url = $model->id
         $.ajax({
@@ -170,4 +170,5 @@ $profileImage = $source->source === 'facebook'
     JS;
 
     $this->registerJs($js);
+    
 }
