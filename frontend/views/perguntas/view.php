@@ -148,3 +148,25 @@ $profileImage = $source->source === 'facebook'
 <div class="reveal" id="login-modal" data-reveal data-animation-in="fade-in">
     <h4>Pergunta cadastrada com sucesso</h4>
 </div>
+
+<?php if (Yii::$app->user->isGuest){
+    $js = <<<JS
+
+    $(document).ready(function() { 
+        var url = $model->id
+        $.ajax({
+            type: 'POST',
+            url: 'index.php?r=site/login-ajax&url=' + url,
+            success: function (data) {
+                $('#login-modal').html(data)
+                $('#login-modal').foundation('open')
+            }
+        });
+    });
+    
+    JS;
+
+    $this->registerJs($js);
+
+}
+?>
