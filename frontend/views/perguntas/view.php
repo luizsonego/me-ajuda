@@ -12,13 +12,12 @@ use yii\widgets\Pjax;
 $this->title = $model->id;
 \yii\web\YiiAsset::register($this);
 
-?>
-<?php
 $source = Auth::findOne(['user_id' => $model->user_id]);
 $profile = AlunoProfile::findOne($model->user_id);
 $profileImage = $source->source === 'facebook' 
-? 'http://graph.facebook.com/'.$profile->gravatar_id.'/picture?type=square' 
-: 'frontend/web/assets/users_ico/'.$profile->gravatar_id;
+    ? 'http://graph.facebook.com/'.$profile->gravatar_id.'/picture?type=square' 
+    : 'frontend/web/assets/users_ico/'.$profile->gravatar_id;
+
 ?>
 
 <div class="large-8 columns large-centered">
@@ -37,7 +36,7 @@ $profileImage = $source->source === 'facebook'
                 </span>
             </div>
             <div class="actions">
-                <img src="<?php echo $profileImage; ?>" alt="<?php echo $profile->name; ?>" title="<?php echo $profile->name; ?>" class="img-profile">
+                <img src="<?php echo $profileImage; ?>" alt="<?php echo $profile->name; ?>" title="<?php echo $profile->name; ?>" class="img-profile" />
             </div>
         </div>
     </div>
@@ -65,15 +64,15 @@ $profileImage = $source->source === 'facebook'
                                 [
                                     'class' => 'button-like',
                                     'onclick' => '$.ajax({
-                                            url: "index.php?r=respostas/likeable",
-                                            data: { "id" : ' . $resposta->id . ', "now" : ' . $resposta->is_likeable . ' },
-                                            success: function (result) {
-                                                $.pjax.reload({container: "#answer"})
-                                            },
-                                            error: function (errormessage) {
-                                                console.log("error", errormessage)
-                                            }
-                                        })'
+                                        url: "index.php?r=respostas/likeable",
+                                        data: { "id" : ' . $resposta->id . ', "now" : ' . $resposta->is_likeable . ' },
+                                        success: function (result) {
+                                            $.pjax.reload({container: "#answer"})
+                                        },
+                                        error: function (errormessage) {
+                                            console.log("error", errormessage)
+                                        }
+                                    })'
                                 ]
                             );
                         ?>
@@ -105,7 +104,7 @@ $profileImage = $source->source === 'facebook'
                                     ]
                                 );
                             }
-                            if(!Yii::$app->user->isGuest && $model->user_id === Yii::$app->user->identity->id){
+                            if(!Yii::$app->user->isGuest && $model->user_id === Yii::$app->user->identity->id) {
                                 if ($resposta->is_best === 1){
                                     echo Html::button(
                                         '<div class="text-count hide-for-small-only">Remover melhor resposta</div>',
@@ -133,16 +132,17 @@ $profileImage = $source->source === 'facebook'
                         $source = Auth::findOne(['user_id' => $resposta->user_id]);
                         $profile = AlunoProfile::findOne($resposta->user_id);
                         $profileImage = $source->source === 'facebook' 
-                        ? 'http://graph.facebook.com/'.$profile->gravatar_id.'/picture?type=square' 
-                        : 'frontend/web/assets/users_ico/'.$profile->gravatar_id;
+                            ? 'http://graph.facebook.com/'.$profile->gravatar_id.'/picture?type=square' 
+                            : 'frontend/web/assets/users_ico/'.$profile->gravatar_id;
                         ?>
-                    <img src="<?php echo  $profileImage; ?>" alt="<?php echo $profile->name; ?>" title="<?php echo $profile->name; ?>" class="img-profile">
+                    <img src="<?php echo $profileImage; ?>" alt="<?php echo $profile->name; ?>" title="<?php echo $profile->name; ?>" class="img-profile" />
                 </div>
             </div>
         </div>
 
     <?php endforeach; ?>
     <?php Pjax::end(); ?>
+
 </div>
 
 <div class="reveal" id="login-modal" data-reveal data-animation-in="fade-in">
