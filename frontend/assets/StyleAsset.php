@@ -7,19 +7,19 @@ use yii\web\AssetBundle;
 /**
  * Main frontend application asset bundle.
  */
-class AppAsset extends AssetBundle
+class StyleAsset extends AssetBundle
 {
     public $basePath = '@webroot';
     public $baseUrl = '@web';
     public $css = [
-        'css/site.css',
+        'css/_global.css',
+        'css/styles.css',
+        'css/questions.css',
+        'css/answer.css',
     ];
-    public $js = [
-    ];
-
+    public $js = [];
     public $depends = [
         'yii\web\YiiAsset',
-        'yii\bootstrap\BootstrapAsset',
     ];
     public $publishOptions = [
         'forceCopy' => false,

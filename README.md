@@ -3,6 +3,7 @@ grupos
     nome-grupo
     admin-grupo
     flag
+    permissoes
     created_at
     updated_at
     deleted_at
@@ -13,6 +14,7 @@ usuarios
 pergntas
     id-group
     privacidade
+    validade
     
 
 pergntas respondida

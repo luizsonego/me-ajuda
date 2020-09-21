@@ -117,7 +117,8 @@ class SiteController extends Controller
                     'name' => 'myquestbeforelogin',
                     'value' => $pergunta . '~' . $materia,
                 ]));
-                \Yii::$app->getSession()->setFlash('modal', 'Por favor faça login para criar uma pergunta');
+                // \Yii::$app->getSession()->setFlash('modal', 'Por favor faça login para criar uma pergunta');
+                Yii::$app->session->setFlash('success', "Por favor faça login para criar uma pergunta."); 
                 $this->redirect(['site/login']);
                 return 2;
             }
@@ -125,7 +126,7 @@ class SiteController extends Controller
             $cookies = Yii::$app->response->cookies;
             $cookies->remove('myquestbeforelogin');
             unset($cookies['myquestbeforelogin']);
-            \Yii::$app->getSession()->setFlash('modal', 'Pergunta cadastrada com sucesso');
+            // \Yii::$app->getSession()->setFlash('info', 'Pergunta cadastrada com sucesso');
             return 1;
         }
 

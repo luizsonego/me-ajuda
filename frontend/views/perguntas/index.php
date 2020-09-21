@@ -2,6 +2,7 @@
 
 use app\models\AlunoProfile;
 use app\models\Auth;
+use app\models\Respostas;
 use yii\widgets\Pjax;
 use yii\helpers\Url;
 use yii\helpers\Html;
@@ -11,74 +12,97 @@ $this->title = 'Perguntas';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="perguntas-index">
-
+    <div class="large-2 columns">&nbsp;</div>
     <?php Pjax::begin(); ?>
-
-    <div class="row">
-        <div class="col-md-8 centered">
-            <?php echo $this->render('_search', ['model' => $searchModel, 'materia' => $materia]); ?>
-            <?php foreach ($dataProvider->getModels() as $key => $quest) : ?>
-                <?
-                $source = Auth::findOne(['user_id' => $quest->user_id]);
-                $profile = AlunoProfile::findOne($quest->user_id);
-                $profileImage = $source->source === 'facebook' 
-                ? 'http://graph.facebook.com/'.$profile->gravatar_id.'/picture?type=square' 
-                : 'frontend/web/assets/users_ico/'.$profile->gravatar_id;
-                ?>
-                <div class="media border">
-                    <div class="media-body">
-
-                        <div class="question">
-                            <div class="list-group-item-text"><?= nl2br($quest->pergunta) ?></div>
-                        </div>
-                        <div class="dados">
-                            <div class="dado"><?= $quest->onematerias->materia ?></div>
-                            <div class="dado"><?= date('d F \d\e Y', strtotime($quest->created_at)) ?></div>
-                        </div>
-                        <div class="action">
-                            <div class="user">
-                                <div class="ico_user">
-                                    <img src="<?= $profileImage; ?>" alt="<?= $quest->aluno->username ?>" title="<?= $quest->aluno->username ?>">
-                                </div>
-                            </div>
-                            <div class="acao">
-                                <?php $url = Url::to(['perguntas/view', 'id' => $quest->id]); ?>
-                                <a href="<?= $url ?>" class="btn btn-block btn-dark btn-outline-dark ">Responder</a>
-                            </div>
-                        </div>
+    <?php //echo $this->render('_search', ['model' => $searchModel, 'materia' => $materia]); 
+    ?>
+    <div class="large-8 columns">
+        <?php foreach ($dataProvider->getModels() as $key => $quest) : ?>
+            <?
+        $source = Auth::findOne(['user_id' => $quest->user_id]);
+        $profile = AlunoProfile::findOne($quest->user_id);
+        $profileImage = $source->source === 'facebook' 
+        ? 'http://graph.facebook.com/'.$profile->gravatar_id.'/picture?type=square' 
+        : 'frontend/web/assets/users_ico/'.$profile->gravatar_id;
+        ?>
+            <div class="box">
+                <div class="content">
+                    <?= $quest->pergunta ?>
+                </div>
+                <div class="footer">
+                    <div class="materia">
+                        <span class="materia">
+                            <?= $quest->onematerias->materia ?> <br>
+                        </span>
+                        <span class="data">
+                            <?= date('d F \d\e Y', strtotime($quest->created_at)) ?>
+                        </span>
+                    </div>
+                    <div class="respostas">
+                        <img src="frontend/web/assets/icon_comment.svg" alt="icone respostas"> <?= Respostas::sumAnswers($quest->id) ?> respostas
+                    </div>
+                    <div class="actions">
+                        <?php $url = Url::to(['perguntas/view', 'id' => $quest->id]); ?>
+                        <button class="button-answer" onclick="location.href='<?= $url ?>'">Responder</button>
+                        <img src="<?= $profileImage; ?>" alt="<?= $profile->name ?>" title="<?= $profile->name ?>" class="img-profile">
                     </div>
                 </div>
-            <?php endforeach; ?>
-        </div>
-    </div>
+            </div>
+        <?php endforeach; ?>
 
 
-    <div class="row">
-        <div class="col-md-8 centered" >
-            <?=
-                ListView::widget([
-                    'dataProvider' => $dataProvider,
-                    'itemOptions' => [
-                        'class' => 'item',
-                        'tag' => false,
-                    ],
+        <?=
+            // ListView::widget([
+            //     'dataProvider' => $dataProvider,
+            //     'itemOptions' => [
+            //         'class' => 'item',
+            //         'tag' => false,
+            //     ],
+            //     'options' => [
+            //         'tag' => 'nav',
+            //         'class' => 'pagination text-center',
+            //         'id' => '',
+            //         'aria-label' => 'Pagination'
+            //     ],
+            //     'pager' => [
+            //         'firstPageLabel' => '<< Primeira',
+            //         'lastPageLabel' => 'Última >>',
+            //         'nextPageLabel' => 'Próxima >',
+            //         'prevPageLabel' => '< Anterior',
+            //         'maxButtonCount' => 3,
+            //     ],
+            //     'layout' => "{pager}"
+            // ]);
+            ListView::widget([
+                'dataProvider' => $dataProvider,
+                'pager' => [
+                    'firstPageLabel' => 'first',
+                    'lastPageLabel' => 'last',
+                    // 'prevPageLabel' => 'previous',
+                    // 'nextPageLabel' => 'next',
+                    'maxButtonCount' => 5,
+
+                    // Customzing options for pager container tag
                     'options' => [
-                        'tag' => 'nav',
-                        'class' => 'pagination text-center',
-                        'id' => '',
-                        'aria-label' => 'Pagination'
+                        'tag' => 'div',
+                        'class' => 'paginacao',
+                        'id' => 'pager-container',
                     ],
-                    'pager' => [
-                        'firstPageLabel' => '<< Primeira',
-                        'lastPageLabel' => 'Última >>',
-                        'nextPageLabel' => 'Próxima >',
-                        'prevPageLabel' => '< Anterior',
-                        'maxButtonCount' => 3,
-                    ],
-                    'layout' => "{pager}\n{items}\n{summary}"
-                ]);
-            ?>
-        </div>
+
+                    // Customzing CSS class for pager link
+                    'linkOptions' => ['class' => 'mylink'],
+                    'activePageCssClass' => 'current',
+                    'disabledPageCssClass' => 'disabeld',
+
+                    // Customzing CSS class for navigating link
+                    'prevPageCssClass' => 'mypre',
+                    'nextPageCssClass' => 'mynext',
+                    'firstPageCssClass' => 'myfirst',
+                    'lastPageCssClass' => 'mylast',
+                ],
+                'layout' => "{pager}"
+            ]);
+        ?>
     </div>
 
     <?php Pjax::end(); ?>
@@ -86,68 +110,64 @@ $this->params['breadcrumbs'][] = $this->title;
 
 
 <style>
-    .pagination > li > a, .pagination > li > span {
-        border: none;
+    .paginacao {
+        margin: 5vh auto;
+        max-width: 405px;
+        font-size: 1em;
+        /*box-shadow: -2px 0px 31px -5px rgba(128,128,128,1);*/
     }
 
-    .question {
-        border: 1px solid #ccc;
-        padding: 10px;
-        border-radius: 1px;
-        min-height: 50px;
+    .paginacao li {
+        text-align: center;
+        display: inline-block;
+        background-color: #f8f8f8;
+        padding: 15px;
+        color: #838383;
+        height: 45px;
+        width: 15px;
+        margin: 0 -5px 0 0;
+        padding: 10px 25px 10px 15px;
     }
 
-    .dados {
-        min-height: 15px;
-        padding: 10px;
-        border-left: 1px solid #ccc;
-        border-right: 1px solid #ccc;
-        border-bottom: 1px solid #ccc;
-        display: flex;
-        justify-content: space-between;
+    .paginacao li:first-child {
+        width: 60px;
+        border-radius: 5px 0px 0px 5px;
     }
 
-    .action {
-        min-height: 15px;
-        display: flex;
-        justify-content: space-between;
+    .paginacao li:last-child {
+        width: 60px;
+        border-radius: 0px 5px 5px 0px;
     }
 
-    .acao {
-        display: flex;
-        width: 200px;
-        justify-content: end;
-        float: right;
-        margin: 10px 0;
+    .paginacao li:hover,
+    .paginacao li:hover a {
+        background-color: var(--color-primary);
+        color: var(--color-text-secondary);
+        cursor: pointer;
     }
 
-
-    .action .btn {
-        background-color: #c33f2c;
-        color: #fff;
-        border-radius: 1px;
+    .paginacao li.current {
+        background: var(--color-primary);
+        font-weight: 600;
+    }
+    
+    .paginacao li.current a {
+        color: var(--color-white);
     }
 
-    .ico_user {
-        background-color: #ccc;
-        width: 40px;
-        height: 40px;
-        border-radius: 50%;
-        vertical-align: middle;
-        top: 10px;
-        position: relative;
-    }
-    .ico_user img {
-        border-radius: 50%;
+    .paginacao li a {
+        color: var(--color-text-primary);
     }
 
-    .ver-mais {
-        background-color: #333;
-        color: #fefefe;
-        border-radius: 1px;
-        margin: 15px 0;
-        display: block;
-        justify-content: center;
-        width: 200px;
+    .paginacao li.disabeld {
+        background-color: #d8d8d8;
+        color: white;
+    }
+
+    .paginacao li.disabeld:hover {
+        background-color: #d8d8d8;
+        color: white;
+        /*font-weight: 600;*/
+        cursor: default;
     }
 </style>

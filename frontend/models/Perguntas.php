@@ -83,7 +83,7 @@ class Perguntas extends \yii\db\ActiveRecord
     {
         $last = Perguntas::find()
             ->where(['user_id' => Yii::$app->user->identity->id])
-            ->limit(1)
+            ->limit(7)
             ->orderBy('id DESC')
             ->all();
             

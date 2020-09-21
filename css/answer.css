@@ -1,0 +1,126 @@
+.perguntas-create {
+  height: 230px;
+  margin-bottom: 40px;
+}
+
+#answer {
+  margin-top: 50px;
+}
+
+.box .content {
+  margin-bottom: 20px;
+}
+
+.likes {
+  display: grid;
+  grid-template-columns: 1fr auto auto;
+  grid-template-rows: 1fr;
+}
+
+.text-count {
+  font: 700 1em Roboto !important;
+  margin-left: 50px;
+}
+
+.button-action {
+  width: 100px;
+}
+
+.button-like {
+  color: var(--color-text-secundary) !important;
+  background-image: url("../frontend/web/assets/apple.svg");
+  background-size: 15px;
+  background-repeat: no-repeat;
+  background-position: center;
+  border: 2px solid var(--color-primary-darker);
+  width: 40px;
+  height: 40px;
+  border-radius: 50% !important;
+  -webkit-border-radius: 50% !important;
+  -moz-border-radius: 50% !important;
+  -ms-border-radius: 50% !important;
+  -o-border-radius: 50% !important;
+}
+
+.button-best {
+  color: var(--color-text-secundary) !important;
+  background-image: url("../frontend/web/assets/best.svg");
+  background-size: 15px;
+  background-repeat: no-repeat;
+  background-position: center;
+  border: 2px solid var(--color-secundary-lighter);
+  width: 40px;
+  height: 40px;
+  border-radius: 50% !important;
+  -webkit-border-radius: 50% !important;
+  -moz-border-radius: 50% !important;
+  -ms-border-radius: 50% !important;
+  -o-border-radius: 50% !important;
+}
+
+.is-best {
+  background-image: url("../frontend/web/assets/best.svg");
+  background-size: 15px;
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 40px;
+  height: 40px;
+}
+
+.button-remove-best {
+  color: var(--color-text-secundary) !important;
+  background-size: 15px;
+  background-repeat: no-repeat;
+  background-position: center;
+  border: 2px solid var(--color-alert-danger);
+  width: 40px;
+  height: 40px;
+  border-radius: 50% !important;
+  -webkit-border-radius: 50% !important;
+  -moz-border-radius: 50% !important;
+  -ms-border-radius: 50% !important;
+  -o-border-radius: 50% !important;
+}
+
+.close-button {
+  right: 0;
+  height: 0;
+  margin: 0px -10px 0px 0px;
+}
+
+.close-button span {
+  color: var(--color-text-secundary);
+  font-size: 1em;
+}
+
+@media screen and (max-width: 780px) {
+  .perguntas-create {
+    height: auto;
+  }
+
+  .button-like {
+    border: none;
+  }
+  .text-count {
+    margin-left: 20px;
+  }
+
+  .is-best{
+    width: 30px;
+    height: 30px;
+  }
+
+  .footer.answer {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+    grid-template-areas:
+      "respo ac";
+  }
+
+  .button-best {
+    border: none;
+    margin-left: -80px;
+  }
+  
+}
