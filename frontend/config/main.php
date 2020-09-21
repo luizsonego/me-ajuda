@@ -14,9 +14,9 @@ return [
     'components' => [
         'assetManager' => [
             'class' => 'yii\web\AssetManager',
-            'forceCopy' => true,
+            'forceCopy' => false,
             'linkAssets' => false,
-            'appendTimestamp' => true,
+            'appendTimestamp' => false,
         ],
         'authClientCollection' => [
             'class' => 'yii\authclient\Collection',

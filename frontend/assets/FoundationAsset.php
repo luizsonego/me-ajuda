@@ -29,6 +29,6 @@ class FoundationAsset extends AssetBundle
     public $depends = [];
 
     public $publishOptions = [
-        'forceCopy' => true,
+        'forceCopy' => false,
     ];
 }
