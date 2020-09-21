@@ -149,15 +149,16 @@ $profileImage = $source->source === 'facebook'
     <h4>Pergunta cadastrada com sucesso</h4>
 </div>
 
-<?php if (Yii::$app->user->isGuest){
-    $js = <<<JS
+<?php if (Yii::$app->user->isGuest) {
+
+    $script = <<< JS
 
     $(document).ready(function() { 
         var url = $model->id
         $.ajax({
             type: 'POST',
             url: 'index.php?r=site/login-ajax&url=' + url,
-            success: function (data) {
+            success: function(data) {
                 $('#login-modal').html(data)
                 $('#login-modal').foundation('open')
             }
@@ -166,7 +167,7 @@ $profileImage = $source->source === 'facebook'
     
     JS;
 
-    $this->registerJs($js);
+    $this->registerJs($script);
 
 }
 ?>
