@@ -169,3 +169,4 @@ $profileImage = $source->source === 'facebook'
     $this->registerJs($js);
 
 }
+?>
