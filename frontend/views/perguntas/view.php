@@ -151,6 +151,13 @@ $profileImage = $source->source === 'facebook'
 
 <?php if (Yii::$app->user->isGuest) {
 
- 
+    $script = <<< JS
+
+
+    
+    JS;
+
+    $this->registerJs($script);
+
 }
 ?>
