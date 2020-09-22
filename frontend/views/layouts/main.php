@@ -115,7 +115,7 @@ FoundationAsset::register($this);
                     ?>
                     <!-- <li class="hide-for-small-only"><a href="#">TOUR</a></li>
                     <li class="hide-for-small-only"><a href="#">LOGIN</a></li> -->
-                    <li>
+                    <!-- <li>
                         <button class="offcanvas-trigger" type="button" data-open="offCanvasRight">
                             <span class="offcanvas-trigger-text hide-for-small-only">Menu</span>
                             <div class="hamburger">
@@ -124,7 +124,7 @@ FoundationAsset::register($this);
                                 <span class="line"></span>
                             </div>
                         </button>
-                    </li>
+                    </li> -->
                 </ul>
             </div>
         </div>
