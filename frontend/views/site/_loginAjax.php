@@ -17,7 +17,7 @@ LoginAsset::register($this);
 <?php $authAuthChoice = AuthChoice::begin(['baseAuthUrl' => ['site/auth'], 'autoRender' => false]); ?>
 <ul>
   <?php foreach ($authAuthChoice->getClients() as $client) : ?>
-    <li><?= Html::a('Login com  ' . $client->title, ['site/auth', 'authclient' => $client->name,], ['class' => "login-box-social-button-$client->name "]) ?></li>
+    <li><?//= Html::a('Login com  ' . $client->title, ['site/auth', 'authclient' => $client->name,], ['class' => "login-box-social-button-$client->name "]) ?></li>
   <?php endforeach; ?>
 </ul>
 <?php AuthChoice::end(); ?>
